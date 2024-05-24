@@ -1,6 +1,6 @@
 function Calendar() {
     return(
-        <div>
+        <div className=" text-center text-7xl">
             hi Calendar
         </div>
     );

@@ -1,6 +1,6 @@
 function Caloriecalculator() {
     return(
-        <div>
+        <div className=" text-center text-7xl">
             hi Caloriecalculator
         </div>
     );
