@@ -1,11 +1,25 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home";
+import Profile from "./Pages/Profile";
+import Exercises from "./Pages/Exercises";
+import Calendar from "./Pages/Calendar";
+import Caloriecalculator from "./Pages/Caloriecalculator";
+import Signup from "./Pages/Signup";
+import Navbar from "./Component/Navbar";
 
 function App() {
   return (
-    <div className=" bg-indigo-950 h-screen">
-    <h1 className="text-8xl font-bold text-center	text-lime-400	">
-      Let's Begin
-    </h1>
-    </div>
+    <BrowserRouter>
+    <Navbar/>
+    <Routes>
+      <Route path="/" element={<Home/>} />
+      <Route path="/Profile" element={<Profile/>} />
+      <Route path="/Exercises" element={<Exercises/>} />
+      <Route path="/Calendar" element={<Calendar/>} />
+      <Route path="/Caloriecalculator" element={<Caloriecalculator/>} />
+      <Route path="/Signup" element={<Signup/>} />
+    </Routes>
+    </BrowserRouter>
   );
 }
 
