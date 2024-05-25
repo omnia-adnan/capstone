@@ -9,8 +9,6 @@ import Navbar from "./Component/Navbar";
 
 function App() {
   return (
-    <div className=" bg-indigo-950 h-screen">
-      <div className="">
     <BrowserRouter>
     <Navbar/>
     <Routes>
@@ -22,8 +20,6 @@ function App() {
       <Route path="/Signup" element={<Signup/>} />
     </Routes>
     </BrowserRouter>
-    </div>
-    </div>
   );
 }
 
