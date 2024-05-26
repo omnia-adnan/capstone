@@ -9,6 +9,7 @@ import Navbar from "./Component/Navbar";
 
 function App() {
   return (
+    <div className=" text-white bg-indigo-950~">
     <BrowserRouter>
     <Navbar/>
     <Routes>
@@ -20,6 +21,7 @@ function App() {
       <Route path="/Signup" element={<Signup/>} />
     </Routes>
     </BrowserRouter>
+    </div>
   );
 }
 
