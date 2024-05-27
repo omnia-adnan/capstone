@@ -17,7 +17,7 @@ function Navbar() {
                 {togglebar ? <IoCloseSharp className=" size-6 mt-3 ml-3"/> : <FaBars className=" size-6 mt-3 ml-3"/>}
             </button>
         
-    <nav  className={togglebar ? " p-0 m-0 absolute bg-lime-400 h-screen w-3/4 md:inline md:w-64 2xl:w-1/5 2xl:p-24" 
+    <nav  className={togglebar ? " p-0 m-0 absolute bg-lime-400 h-screen w-3/4 md:inline md:w-64 2xl:w-1/5 2xl:p-24 z-50" 
             : "hidden"}>
         <ul className=" 2xl:text-7xl space-y-5">
             <li>
