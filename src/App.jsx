@@ -9,7 +9,7 @@ import Navbar from "./Component/Navbar";
 
 function App() {
   return (
-    <div className=" text-white bg-indigo-950  h-screen">
+    <div className=" bg-blue-950 h-screen flex">
     <BrowserRouter>
     <Navbar/>
     <Routes>
