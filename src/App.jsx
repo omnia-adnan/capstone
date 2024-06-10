@@ -4,7 +4,7 @@ import Profile from "./Pages/Profile";
 import Exercises from "./Pages/Exercises";
 import Calendar from "./Pages/Calendar";
 import Caloriecalculator from "./Pages/Caloriecalculator";
-import Signup from "./Pages/Signup";
+import Signup from "./Pages/Registra";
 import Navbar from "./Component/Navbar";
 
 function App() {

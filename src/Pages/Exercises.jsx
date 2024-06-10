@@ -1,8 +1,8 @@
 function Exercises() {
     return(
-        <div  className=" grid grid-cols-1 2xl:text-7xl">
+        <div  className="2xl:text-7xl">
         <div>
-            <img src="https://cdn.pixabay.com/photo/2022/04/27/22/42/sport-7161424_1280.jpg" alt="healthy" className=" w-11/12 h-1/2 mt-16 -ml-5 md:ml-6 md:mt-4"/>
+            <img src="https://cdn.pixabay.com/photo/2022/04/27/22/42/sport-7161424_1280.jpg" alt="healthy" className=" w-11/12 h-1/2"/>
         </div>
         <div className=" text-white w-full h-auto p-1">
             <lable>
