@@ -10,8 +10,10 @@ module.exports = {
         'bg-blue-900': '#02367D',
         'bg-lime-400': '#C8FF71',
       },
+      fontSize: {
+        'text-base': 'clamp(1rem, 2.5vw, 2rem); '
     },
-    
+  },
   },
   plugins: [],
 }

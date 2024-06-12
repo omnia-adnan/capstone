@@ -7,8 +7,9 @@ function CalendarPage() {
         setData(newdata);
     }
     return(
-        <div className=" text-white bg-blue-900 border border-black leading-6 2xl:text-7xl">
+        <div className=" p-3 md:my-4 2xl:text-6xl text-white flex-1 h-screen">
             <Calendar onChang={onChang} value={data} />
+            
         </div>
     );
 }
