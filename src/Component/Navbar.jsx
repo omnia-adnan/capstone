@@ -30,12 +30,12 @@ function Navbar() {
                     </Link>
                 </li>
                 <li className=" text-base flex items-center gap-x-4 cursor-pointer p-1 hover:bg-blue-950 hover:text-white hover:rounded-xl">
-                    <Link to="/Exercises" className="flex items-center pt-1 pl-5">
+                    <Link to="/GoalsDay" className="flex items-center pt-1 pl-5">
                     <svg className={` ${togglebar ? "flex-shrink-0 size-1/6" : "flex-1 -ml-3.5 size-1/5 text-blue-950"}	`} viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  
                     <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />  
                     <circle cx="8.5" cy="7" r="4" />  <polyline points="17 11 19 13 23 9" />
                     </svg>
-                    <span className={` ${togglebar ? "inline-block" : "hidden"} ms-2 2xl:ms-5`}>Exercises</span>
+                    <span className={` ${togglebar ? "inline-block" : "hidden"} ms-2 2xl:ms-5`}>GoalsDay</span>
                     </Link>
                 </li>
                 <li className=" text-base flex items-center gap-x-4 cursor-pointer p-1 hover:bg-blue-950 hover:text-white hover:rounded-xl">
@@ -46,7 +46,7 @@ function Navbar() {
                     <span className={` ${togglebar ? "inline-block" : "hidden"} ms-2 2xl:ms-5`}>Calendar</span>
                     </Link>
                 </li>
-                <li className=" text-base flex items-center gap-x-4 cursor-pointer p-1 hover:bg-blue-950 hover:text-white hover:rounded-xl">
+                {/* <li className=" text-base flex items-center gap-x-4 cursor-pointer p-1 hover:bg-blue-950 hover:text-white hover:rounded-xl">
                     <Link to="/Caloriecalculator" className="flex items-center pt-1 pl-5">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={` ${togglebar ? "flex-shrink-0 size-1/6" : "flex-1 -ml-3.5 size-1/5 text-blue-950"}	`}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
@@ -54,7 +54,7 @@ function Navbar() {
                     <span className={` ${togglebar ? "inline-block" : "hidden"} ms-2 2xl:ms-5`}>
                     Calorie Calculator</span>
                     </Link>
-                </li>
+                </li> */}
             </ul>
         </nav>
         <div className=" text-base flex items-center gap-x-4 cursor-pointer p-1">
@@ -83,10 +83,10 @@ function Navbar() {
                     </Link>
                 </li>
                 <li className=" hover:bg-blue-950 hover:text-white hover:rounded-full">
-                <Link to="/Exercises" className="flex items-center pt-1 pl-5 2xl:p-6">
+                <Link to="/GoalsDay" className="flex items-center pt-1 pl-5 2xl:p-6">
                 <svg className=" flex-shrink-0 size-1/6"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />  <circle cx="8.5" cy="7" r="4" />  <polyline points="17 11 19 13 23 9" />
                 </svg>
-                <span className="ms-2 2xl:ms-5">Exercises</span>
+                <span className="ms-2 2xl:ms-5">GoalsDay</span>
                     </Link>
                 </li>
                 <li className=" hover:bg-blue-950 hover:text-white hover:rounded-full">
@@ -97,7 +97,7 @@ function Navbar() {
                 <span className="ms-2 2xl:ms-5">Calendar</span>
                     </Link>
                 </li>
-                <li className=" hover:bg-blue-950 hover:text-white hover:rounded-full">
+                {/* <li className=" hover:bg-blue-950 hover:text-white hover:rounded-full">
                     <Link to="/Caloriecalculator" className="flex items-center pt-1 pl-5 2xl:p-6">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="flex-shrink-0 size-1/6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
@@ -105,7 +105,7 @@ function Navbar() {
                 <span className="ms-2 2xl:ms-5">
                     Calorie Calculator</span>
                     </Link>
-                </li>
+                </li> */}
                 <li className="flex items-center gap-x-4 cursor-pointer p-1">
                     <Link to="/Registra" className="flex items-center pt-1 pl-6 2xl:pl-20">
                         <span className={`w-28 rounded-full bg-gray-300 hover:bg-blue-950 hover:text-white text-center items-center drop-shadow-xl 2xl:w-96 2xl:h-24 2xl:pt-4`}>Registra</span>

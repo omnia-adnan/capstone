@@ -16,11 +16,12 @@ function Home() {
     //         };
 
     return(
-        <div className=" m-4 mt-10 flex-1 ">
+        <div className=" m-4 2xl:mt-24 2xl:mr-32 ">
             {/* <button onCompositionUpdate={randomHero}> 
                 <ReactPlayer url={herosSection[video]} loop controls={true} width='100%' height='100%'/>
             </button> */}
-            <img src="../Asset/pumpkin.jpg" alt="pumpkin" className=" object-cover w-screen h-auto"/>
+            <img src="https://cdn.pixabay.com/photo/2024/03/07/19/31/ai-generated-8619138_1280.png" alt="pumpkin" className=" w-screen h-1/2"/>
+            <div className=" md:grid md:grid-cols-2">
             <Card
             image="https://kids-bunny.co.uk/wp-content/uploads/INFOGRAPHIC-POST/healthy-lifestyle.png"
             title="lorem"
@@ -39,7 +40,7 @@ function Home() {
             descrpthion="Lorem ipsum dolor sit amet consectetur adipisicing elit."
             url='https://www.gantrykids.com/the-importance-of-a-healthy-lifestyle-for-kids'
             />
-            
+            </div>
         </div>
     );
 }

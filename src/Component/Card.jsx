@@ -7,17 +7,17 @@ export const Card = ({
 }) => {
 
 return (
-        <div className=" bg-emerald-400 ">
-            <a href={url} className="flex mt-3 rounded-lg bg-blue-900 h-20 text-base text-white">
-        <div className=" w-2/3 h-1/2 rounded-full">
+        <div className=" mt-2 md:m-2 lg:w-[300px]">
+            <a href={url} className="flex rounded-lg bg-blue-900 h-20 text-base text-white">
+        <div className=" w-2/3 h-1/2">
             <img
-            className=" size-14 rounded-full ml-2 mt-2"
+            className=" size-12 lg:size-14 rounded-full ml-4 mt-4 lg:mt-3"
             src={image || 'https://via.placeholder.com/300x200?text=Card+Image'}
             alt="imge article"
             />
         </div>
-        <div className=" p-4 ">
-            <h3 className=" text-base">{title}</h3>
+        <div style={{fontSize: '12px', lineHeight: '1.5', marginTop: '8px'}}>
+            <h3>{title}</h3>
             <p>{descrpthion}</p>
         </div>
         </a>
