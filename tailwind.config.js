@@ -10,6 +10,14 @@ module.exports = {
         'bg-blue-900': '#02367D',
         'bg-lime-400': '#C8FF71',
       },
+      gridTemplateAreas: {
+        'default': [
+          '.    .    .    .',
+          '.    hero    . hero',
+          '.    hero    . hero',
+          '.    .    .    .',
+        ]
+      },
   },
   },
   plugins: [],

@@ -7,7 +7,7 @@ export const Card = ({
 }) => {
 
 return (
-        <div className=" mt-2 md:m-2 lg:w-[300px]">
+        <div className=" mt-2 md:m-2 lg:w-[800px]">
             <a href={url} className="flex rounded-lg bg-blue-900 h-20 text-base text-white">
         <div className=" w-2/3 h-1/2">
             <img
