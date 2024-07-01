@@ -11,7 +11,7 @@ return (
             <a href={url} className="flex rounded-lg bg-blue-900 h-20 text-base text-white">
         <div className=" w-2/3 h-1/2">
             <img
-            className=" size-12 lg:size-14 rounded-full ml-4 mt-4 lg:mt-3"
+            className=" size-full rounded-full ml-4 mt-4 lg:mt-3"
             src={image || 'https://via.placeholder.com/300x200?text=Card+Image'}
             alt="imge article"
             />
