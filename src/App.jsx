@@ -10,13 +10,13 @@ import { useState } from "react";
 
 
 function App() {
-  const [currentForm, setCurrentForm] = useState('Login');
-  const [currentForm2, setCurrentForm2] = useState('Registra');
+  const [currentForm, setCurrentForm] = useState('Registra');
+  // const [currentForm2, setCurrentForm2] = useState('Registra');
 
 
   const toggelForm = (formName) => {
     setCurrentForm(formName);
-    setCurrentForm2(formName)
+    // setCurrentForm2(formName)
   };
 
   return (
@@ -31,7 +31,7 @@ function App() {
       <Route path="/Calendar" element={<Calendar/>} />
       <Route path="/Registra" 
       element={
-        currentForm2 === "Registra" ? (
+        currentForm === "Registra" ? (
           <Registra onFormSwitch={toggelForm} />
         ) : (
           <Login onFormSwitch={toggelForm} />

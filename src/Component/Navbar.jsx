@@ -62,13 +62,13 @@ function Navbar() {
                 <span className={` ${togglebar ? "block" : "hidden"} w-28 rounded-full bg-gray-300 text-center items-center drop-shadow-xl hover:bg-blue-950 hover:text-white`}>Registra</span>
             </Link>
         </div>
-        <div className=" text-base flex items-center gap-x-4 cursor-pointer p-1">
+        {/* <div className=" text-base flex items-center gap-x-4 cursor-pointer p-1">
             <Link to="/Login" className="flex items-center pt-1 pl-6 ">
                 <span className={` ${togglebar ? "block" : "hidden"} w-28 rounded-full bg-gray-300 text-center items-center drop-shadow-xl hover:bg-blue-950 hover:text-white`}>Log In</span>
             </Link>
+        </div> */}
         </div>
-        </div>
-        <nav  className=" hidden md:inline-block bg-lime-400 h-screen md:h-[calc(100%_-_2rem)] md:mx-4 md:mt-4 md:w-48 2xl:w-fit 2xl:p-16 2xl:mx-36 2xl:mt-28 2xl:h-[calc(100%_-_12rem)]">
+        <nav  className=" hidden md:inline-block bg-lime-400 h-screen md:h-[calc(100%_-_2rem)] md:mx-4 md:mt-4 md:w-48 2xl:w-full 2xl:p-16 2xl:mx-36 2xl:mt-28 2xl:h-[calc(100%_-_12rem)]">
             <ul className=" 2xl:text-6xl space-y-5 pt-11">
                 <li className=" hover:bg-blue-950 hover:text-white hover:rounded-full">
                 <Link to="/" className="flex items-center pt-1 pl-5 2xl:p-6">
@@ -116,11 +116,11 @@ function Navbar() {
                         <span className={`w-28 rounded-full bg-gray-300 hover:bg-blue-950 hover:text-white text-center items-center drop-shadow-xl 2xl:w-96 2xl:h-24 2xl:pt-4`}>Registra</span>
                     </Link>
                 </li>
-                <li className="flex items-center gap-x-4 cursor-pointer p-1">
+                {/* <li className="flex items-center gap-x-4 cursor-pointer p-1">
                     <Link to="/Login" className="flex items-center pt-1 pl-6 2xl:pl-20">
                         <span className={`w-28 rounded-full bg-gray-300 hover:bg-blue-950 hover:text-white text-center items-center drop-shadow-xl 2xl:w-96 2xl:h-24 2xl:pt-4`}>Log In</span>
                     </Link>
-                </li>
+                </li> */}
             </ul>
         </nav>
     
