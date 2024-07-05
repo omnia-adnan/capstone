@@ -10,6 +10,9 @@ module.exports = {
         'bg-blue-900': '#02367D',
         'bg-lime-400': '#C8FF71',
       },
+      fontFamily: {
+        'Handlee': ['EB Garamond', 'serif']
+      }
   },
   },
   plugins: [],

@@ -1,43 +1,24 @@
-/* styles.css
 .video-container {
-    position: relative;
-    padding-top: 56.25%; 
-    width: calc(100% - 30px);
-  }
-  
-  .react-player {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    margin-top: 7rem ;
-    margin-right: 20rem;
-  }
-  @media only screen and (max-width: 600px) {
-    .react-player {
-      margin-top: 2rem ;
-      width: calc(100% - 30px);
-
-    }
-  }
-   */
-
-/* styles.css */
-.video-container {
-  position: relative;
-  width: 100%; /* Adjust as needed */
-  max-width: 100%; /* Ensure it doesn't exceed its parent's width */
-  margin: 0 auto; /* Optional: Center the container */
-  
+  margin: 15px 0;
 }
-
-.react-player {
-  position: relative; /* Adjust position if needed */
-  width: calc(100% - 30px); /* Adjust the width calculation as per your design */
-  height: 50%; /* Adjust the height as per your design */
+nav{
+  position: fixed;
+  z-index: 1;
+}
+@media only screen and (min-width: 768px) {
+  .video-container {
+    margin: 15px 0;
+  }
 }
 @media only screen and (min-width: 160em) {
   .video-container {
-    margin-top: 6rem;
+    margin: 2.7% 0;
+    margin-left: -8%;
+    margin-right: 3%;
+    padding-bottom: 7%;
+  }
+  .content{
+    margin-left: -8%;
+    margin-right: 3%;
   }
 }

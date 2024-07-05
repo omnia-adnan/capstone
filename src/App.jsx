@@ -11,19 +11,19 @@ import { useState } from "react";
 
 function App() {
   const [currentForm, setCurrentForm] = useState('Registra');
-  // const [currentForm2, setCurrentForm2] = useState('Registra');
-
 
   const toggelForm = (formName) => {
     setCurrentForm(formName);
-    // setCurrentForm2(formName)
   };
 
   return (
-    <div className=" bg-blue-950 min-h-screen flex">
-      
+    <div className="bg-blue-950 min-h-screen font-Handlee">
     <BrowserRouter>
-    <Navbar/>
+    <div className="sm:flex">
+    <div className="sm:w-1/4">
+      <Navbar />
+    </div>
+    <div className="sm:w-3/4 min-h-screen">    
     <Routes>
       <Route path="/" element={<Home/>} />
       <Route path="/Profile" element={<Profile/>} />
@@ -38,17 +38,9 @@ function App() {
         )
       }
       />
-      <Route 
-            path="/Login" 
-            element={
-              currentForm === "Login" ? (
-                <Login onFormSwitch={toggelForm} />
-              ) : (
-                <Registra onFormSwitch={toggelForm} />
-              )
-            } 
-          />
     </Routes>
+    </div>
+    </div>
     </BrowserRouter>
     </div>
   );
