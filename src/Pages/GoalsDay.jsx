@@ -1,11 +1,11 @@
 function GoalsDay() {
     return(
-        <div  className="2xl:text-7xl">
-        {/* <div>
-            <img src="https://cdn.pixabay.com/photo/2021/01/01/16/06/hand-5879027_1280.jpg" alt="healthy" className=" size-fit md:mr-16"/>
-        </div> */}
-        <div className=" lg:grid lg:grid-cols-2">
-        <div>
+        <div  className="sm:flex 2xl:text-7xl flex flex-col text-white">
+            <div className="sm:flex gap-20">
+            <img src="https://cdn.pixabay.com/photo/2021/01/01/16/06/hand-5879027_1280.jpg" alt="healthy"
+                className="h-auto sm:h-[calc(100vh_-_15rem)] 2xl:h-[calc(100vh_-_60rem)] sm:mt-3 2xl:mt-24 2xl:-ml-[6%] max-w-full rounded-xl"
+            />
+        <div className="m-2 sm:mt-24"> 
         <div className=" text-white w-full h-auto p-1">
             <lable>
             Water <br /> 250 l in day
@@ -58,45 +58,24 @@ function GoalsDay() {
         </div>
         <button type="submit" className=" w-9/12 h-11/12 bg-lime-400 rounded-full">Done</button>
         </div>
-        <div>
-        {/* <div class="MuiGrid-root css-9k7ul8" data-testid="qa-regression-energy=Kilojoules">
-        <div class="MuiBox-root css-k008qs">
-            <p class="MuiTypography-root MuiTypography-inherit css-5nbcix">
-                "Kilojoules"
-                "&nbsp;"
-            </p>
-            <div class="MuiBox-root css-0">
-                <p class="MuiTypography-root MuiTypography-inherit css-5nbcix">5021</p>
-            </div>
         </div>
-        </div> */}
-        <div>
-            <div className=" flex justify-center mt-4 md:mt-2 md:justify-end md:text-lg 2xl:text-6xl">
-                <div className=" rounded-r-full bg-blue-900 w-6/12 md:w-8/12 lg:w-60 lg:h-20 lg:pt-3  h-14 md:h-16 2xl:h-28 z-10 -mr-6 md:pt-3">
-                    <p className=" text-center text-white pt-1">Maintain weight</p>
-                </div>
-                <p className=" bg-gray-300 text-center text-black w-6/12 md:w-8/12 lg:w-60 lg:h-20 lg:pt-3 h-14 md:h-16 2xl:h-28 pt-1 md:pt-0">2,425  100% <br />Calories/day</p>
+        <div className="py-2 2xl:py-10 2xl:-ml-[6%] 2xl:mr-[6%]">
+            <div className=" flex border-b-2 border-blue-500">
+                   <p className="relative p-[10px] 2xl:p-14 pl-3">Maintain weight</p>
+                   <p className="absolute right-3 2xl:right-[5%] pt-2 2xl:pt-14">100% Cal/d</p>
             </div>
-            <div className=" flex justify-center mt-4 md:mt-2 md:justify-end md:text-lg 2xl:text-6xl">
-                <div className=" rounded-r-full bg-blue-900 w-6/12 md:w-8/12 lg:w-60 lg:h-20 lg:pt-3  h-14 md:h-16 2xl:h-28 z-10 -mr-6 md:pt-0">
-                    <p className=" text-center text-white pt-1">Mild weight loss 0.25 kg/week </p>
-                </div>
-                <p className=" bg-gray-300 text-center text-black w-6/12 md:w-8/12 lg:w-60 lg:h-20 lg:pt-3 h-14 md:h-16 2xl:h-28 pt-1 md:pt-0">2,175 90% <br />Calories/day</p>
+            <div className=" flex border-b-2 border-blue-500">
+                    <p className="relative p-[10px] 2xl:p-14 pl-3">Mild weight loss 0.25 kg/week </p>
+                    <p className="absolute right-3 2xl:right-[5%] pt-2 2xl:pt-14">90% Cal/d</p>
             </div>
-            <div className=" flex justify-center mt-4 md:mt-2 md:justify-end md:text-lg 2xl:text-6xl">
-                <div className=" rounded-r-full bg-blue-900 w-6/12 md:w-8/12 lg:w-60 lg:h-20 lg:pt-3  h-14 md:h-16 2xl:h-28 z-10 -mr-6 md:pt-0">
-                    <p className=" text-center text-white pt-1">Weight loss 0.5 kg/week </p>
-                </div>
-                <p className=" bg-gray-300 text-center text-black w-6/12 md:w-8/12 lg:w-60 lg:h-20 lg:pt-3 h-14 md:h-16 2xl:h-28 pt-1 md:pt-0">1,925 79% <br />Calories/day</p>
+            <div className=" flex border-b-2 border-blue-500">
+                    <p className="relative p-[10px] 2xl:p-14 pl-3">Weight loss 0.5 kg/week </p>
+                    <p className="absolute right-3 2xl:right-[5%] pt-2 2xl:pt-14">79% Cal/d</p>
             </div>
-            <div className=" flex justify-center mt-4 md:mt-2 md:justify-end md:text-lg 2xl:text-6xl">
-                <div className=" rounded-r-full bg-blue-900 w-6/12 md:w-8/12 lg:w-60 lg:h-20 lg:pt-3  h-14 md:h-16 2xl:h-28 z-10 -mr-6 md:pt-0">
-                    <p className=" text-center text-white pt-1">Extreme weight loss 1 kg/week </p>
-                </div>
-                <p className=" bg-gray-300 text-center text-black w-6/12 md:w-8/12 lg:w-60 lg:h-20 lg:pt-3 h-14 md:h-16 2xl:h-28 pt-1 md:pt-0">1,425 59% <br />Calories/day</p>
+            <div className=" flex border-b-2 border-blue-500">
+                    <p className="relative p-[10px] 2xl:p-14 pl-3">Extreme weight loss 1 kg/week </p>
+                    <p className="absolute right-3 2xl:right-[5%] pt-2 2xl:pt-14">59% Cal/d</p>
             </div>
-        </div>
-        </div>
         </div>
         </div>
     );

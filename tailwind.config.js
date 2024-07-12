@@ -12,7 +12,10 @@ module.exports = {
       },
       fontFamily: {
         'Handlee': ['EB Garamond', 'serif']
-      }
+      },
+      borderRadius: {
+        '4xl': '12rem',
+      },
   },
   },
   plugins: [],

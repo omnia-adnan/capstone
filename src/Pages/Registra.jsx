@@ -1,22 +1,59 @@
 import { useState } from "react";
 import img from "../Images/mother-429158_1280.jpg"
+import axios from "axios";
+
 
 function Registra(props) {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("");
-    const [pass, setPass] = useState("");
-    const [age, setAge] = useState(0);
-    const [weight, setWeight] = useState(0);
-    const [height, setHeight] = useState(0);
+    const [password, setPassword] = useState("");
+    const [age, setAge] = useState("");
+    const [weight, setWeight] = useState("");
+    const [height, setHeight] = useState("");
+    const [gander, setGander] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email);
-    }
+        const data = {
+            name,
+            age,
+            weight,
+            height,
+            gander,
+            email,
+            password,
+        }
+        axios.post('https://x8ki-letl-twmt.n7.xano.io/api:Wnz-Lmv_/auth/signup', data)
+        .then(
+            resp => { 
+                console.log('Registration successful:', resp.data);
+                // const token = resp.data.token; // Assuming token is returned from backend
+                // localStorage.setItem('token', token);
+                // console.log('Registration successful:', resp.data);
+            }
+        )
+        .catch(
+            err => {
+                console.error('Registration error:', err);
+                if (err.response) {
+                    // Server responded with a status other than 200 range
+                    console.error('Response data:', err.response.data);
+                    console.error('Response status:', err.response.status);
+                    console.error('Response headers:', err.response.headers);
+                } else if (err.request) {
+                    // Request was made but no response was received
+                    console.error('Request data:', err.request);
+                } else {
+                    // Something happened in setting up the request
+                    console.error('Error message:', err.message);
+                }            }
+        )
+    };
+    
     return(
-        <div className="mr-[10%] sm:mr-0 mt-14 sm:mt-[3%] sm:mb-6">
-            <div className="bg-blue-950 text-white flex sm:flex-row border-2 border-black rounded-3xl shadow-2xl shadow-lime-400">
-                <div className=" hidden w-full sm:flex flex-col justify-center items-center px-5">
+        <div className=" container mr-[10%] sm:mr-0 mt-14 sm:mt-[3%] sm:mb-6">
+            <div className="bg-blue-950 flex sm:flex-row border-2 border-black rounded-3xl shadow-2xl shadow-lime-400">
+                <div className=" hidden text-white w-full sm:flex flex-col justify-center items-center px-5">
                     <img src={img} alt="mom and baby" className="rounded-lg border border-black"/>
                     <h1 className="text-xl my-2">Thank you for placing your trust in our web app</h1>
                         <p>When you use our services, 
@@ -54,10 +91,10 @@ function Registra(props) {
                             />
                             <input type="password"
                             name="password"
-                            value={pass}
-                            onChange={(e) => setPass(e.target.value)}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             required
-                            placeholder="Password"
+                            placeholder="password"
                             className=" py-1 px-4 w-full mt-1.5 rounded-3xl"
                             />
                             <input type="number"
@@ -76,7 +113,7 @@ function Registra(props) {
                             placeholder="Your child Height"
                             className=" py-1 px-4 w-full mt-1.5 rounded-3xl"
                             />
-                            <select name="gander" className=" py-1 px-4 w-full mt-1.5 rounded-3xl text-black">
+                            <select name="gander" value={gander} onChange={(e) => setGander(e.target.value)} className=" py-1 px-4 w-full mt-1.5 rounded-3xl text-black">
                                 <option value="">Your child Gander</option>
                                 <option value="male">male</option>
                                 <option value="female">female</option>

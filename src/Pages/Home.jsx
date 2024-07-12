@@ -3,12 +3,30 @@ import ReactPlayer from "react-player/youtube";
 import { Card } from "../Component/Card";
 import '../style.css';
 import { Information } from "../Component/Information";
-// import { XanoClient } from "@xano/js-sdk/lib";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
 
 
 function Home() {
+    // const [Name, setName] = useState('')
     // const [video, setVideo] = useState(0);
     const [gitData, setGitData] = useState([]);
+    // const navigate = useNavigate();
+
+    // axios.defaults.withCredentials = true; 
+    // useEffect(() => {
+    //     axios.get('http://localhost:3000')
+    //     .then(res => {
+    //         if (res.data.valid) {
+    //             setName(res.data.username);
+    //         } else {
+    //             navigate("/login")
+    //         }
+    //     })
+    //     .catch ((err) =>{
+    //         console.log(err);
+    //     })
+    // },[]);
 
     useEffect(() =>{
         fetch("https://x8ki-letl-twmt.n7.xano.io/api:Wnz-Lmv_/article_links")
@@ -22,9 +40,8 @@ function Home() {
         // });
 
     const herosSection = [
-        "https://www.youtube.com/watch?v=orVIPr25ivo",
-
         "https://www.youtube.com/watch?v=mMHVEFWNLMc",
+        "https://www.youtube.com/watch?v=orVIPr25ivo",
         "https://www.youtube.com/watch?v=Vpx-RlF0AcA",
     ]
 
@@ -35,12 +52,13 @@ function Home() {
 
     return(
         <div className="m-2">
+        
         <div className="video-container" style={{ position: 'relative', paddingTop: '56.25%'}}>
             <ReactPlayer
             className="react-player"
             url={herosSection}
             controls={true}
-            playing={true}
+            // playing={true}
             style={{ position: 'absolute', top: '0', left: '0' }}
             width= "100%"
             height="100%"
