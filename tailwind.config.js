@@ -16,6 +16,13 @@ module.exports = {
       borderRadius: {
         '4xl': '12rem',
       },
+      fontSize: {
+        'clamp': [ 'clamp(1rem, 10vw, 2rem)', {
+          lineHeight: '2rem',
+          letterSpacing: '-0.01em',
+          fontWeight: '500',
+        }],
+  },
   },
   },
   plugins: [],

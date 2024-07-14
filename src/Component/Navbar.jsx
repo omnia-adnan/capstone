@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { HiMiniBars3BottomRight } from "react-icons/hi2";
 import { IoCloseOutline } from "react-icons/io5";
 import { TiHomeOutline } from "react-icons/ti";
@@ -9,14 +9,14 @@ import { IoCalendarOutline } from "react-icons/io5";
 
 function Navbar() {
     const [togglebar, setTogglebar] = useState(false);
-    const [user, setUser] = useState('')
-    const navigate = useNavigate(); 
+    // const [user, setUser] = useState('')
+    // const navigate = useNavigate(); 
     
-    const handleLogout = () => {
-        localStorage.removeItem('token'); 
-        setUser(null); 
-        navigate('/Register'); 
-    }
+    // const handleLogout = () => {
+    //     localStorage.removeItem('token'); 
+    //     setUser(null); 
+    //     navigate('/Register'); 
+    // }
 
     return(
         <div>
@@ -72,8 +72,8 @@ function Navbar() {
                     </Link>
                 </li>
                 <li className="flex items-center gap-x-4 cursor-pointer p-1">
-                    <Link to="/Registra" className="flex items-center pt-1 pl-6 2xl:pl-20">
-                        <span className={`w-28 rounded-full bg-gray-300 hover:bg-blue-950 hover:text-blue-100 text-center items-center drop-shadow-xl 2xl:w-96 2xl:h-24 2xl:pt-4`} onClick={handleLogout}>Log out</span>
+                    <Link to="/Login" className="flex items-center pt-1 pl-6 2xl:pl-20">
+                        <span className={`w-28 rounded-full bg-gray-300 hover:bg-blue-950 hover:text-blue-100 text-center items-center drop-shadow-xl 2xl:w-96 2xl:h-24 2xl:pt-4`}>Log in</span>
                     </Link>
                 </li>
             </ul>
