@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import ReactPlayer from "react-player/youtube";
-import { Card } from "../Component/Card";
+// import { Card } from "../Component/Card";
 import '../style.css';
 import { Information } from "../Component/Information";
 // import { useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ import { Information } from "../Component/Information";
 function Home() {
     // const [Name, setName] = useState('')
     // const [video, setVideo] = useState(0);
-    const [gitData, setGitData] = useState([]);
+    // const [gitData, setGitData] = useState([]);
     // const navigate = useNavigate();
 
     // axios.defaults.withCredentials = true; 
@@ -28,12 +28,12 @@ function Home() {
     //     })
     // },[]);
 
-    useEffect(() =>{
-        fetch("https://x8ki-letl-twmt.n7.xano.io/api:Wnz-Lmv_/article_links")
-        .then((data) => data.json())
-        .then(json => setGitData(json));
+    // useEffect(() =>{
+    //     fetch("https://x8ki-letl-twmt.n7.xano.io/api:Wnz-Lmv_/article_links")
+    //     .then((data) => data.json())
+    //     .then(json => setGitData(json));
     
-        }, []);
+    //     }, []);
 
         // const client = new XanoClient({ 
         //     baseUrl: 'https://x8ki-letl-twmt.n7.xano.io/api:Wnz-Lmv_', 
@@ -58,7 +58,7 @@ function Home() {
             className="react-player"
             url={herosSection}
             controls={true}
-            // playing={true}
+            playing={true}
             style={{ position: 'absolute', top: '0', left: '0' }}
             width= "100%"
             height="100%"
@@ -73,11 +73,11 @@ function Home() {
             If a child you are caring for does not like a new food right away, don't be upset. 
             Children often need to see a new food many times before they will try it."/>
         </div>
-        <div className="grid sm:grid-cols-2 gap-3 md:float-right">
-        {gitData.map((data) => (
+        {/* <div className="grid sm:grid-cols-3 gap-3 md:float-right">
+        {gitData?.map((data) => (
         <Card key={data.user} title={data.title} description={data.description} url={data.url}/>
         ))}
-        </div>
+        </div> */}
         </div>
         </div>
     );

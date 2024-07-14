@@ -1,16 +1,21 @@
 import { useState } from "react";
 import img from "../Images/mother-429158_1280.jpg"
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-
-function Registra(props) {
+function Register(props) {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [age, setAge] = useState("");
     const [weight, setWeight] = useState("");
     const [height, setHeight] = useState("");
-    const [gander, setGander] = useState("")
+    const [gender, setGender] = useState("")
+    const navigate = useNavigate()
+
+
+
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,34 +24,22 @@ function Registra(props) {
             age,
             weight,
             height,
-            gander,
+            gender,
             email,
             password,
         }
-        axios.post('https://x8ki-letl-twmt.n7.xano.io/api:Wnz-Lmv_/auth/signup', data)
+        axios.post(`https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/signup`, data)
         .then(
-            resp => { 
-                console.log('Registration successful:', resp.data);
-                // const token = resp.data.token; // Assuming token is returned from backend
-                // localStorage.setItem('token', token);
-                // console.log('Registration successful:', resp.data);
+            resp => {
+                console.log(resp);
+        navigate('/Profile')
+
             }
         )
         .catch(
             err => {
-                console.error('Registration error:', err);
-                if (err.response) {
-                    // Server responded with a status other than 200 range
-                    console.error('Response data:', err.response.data);
-                    console.error('Response status:', err.response.status);
-                    console.error('Response headers:', err.response.headers);
-                } else if (err.request) {
-                    // Request was made but no response was received
-                    console.error('Request data:', err.request);
-                } else {
-                    // Something happened in setting up the request
-                    console.error('Error message:', err.message);
-                }            }
+            console.log('signup failed:', err);
+            }
         )
     };
     
@@ -113,12 +106,12 @@ function Registra(props) {
                             placeholder="Your child Height"
                             className=" py-1 px-4 w-full mt-1.5 rounded-3xl"
                             />
-                            <select name="gander" value={gander} onChange={(e) => setGander(e.target.value)} className=" py-1 px-4 w-full mt-1.5 rounded-3xl text-black">
-                                <option value="">Your child Gander</option>
+                            <select name="gender" value={gender} onChange={(e) => setGender(e.target.value)} className=" py-1 px-4 w-full mt-1.5 rounded-3xl text-black">
+                                <option value="">Your child Gender</option>
                                 <option value="male">male</option>
                                 <option value="female">female</option>
                             </select>
-                            <button type="submit" className="w-full bg-lime-400 py-1 text-center sha1.5mt-1.5ow-md shadow-lime-400 border border-black rounded-3xl mt-6 text-black">Registra</button>
+                            <button type="submit" className="w-full bg-lime-400 py-1 text-center sha1.5mt-1.5ow-md shadow-lime-400 border border-black rounded-3xl mt-6 text-black">Register</button>
                     </form>
                     <p className="m-2 text-white">If already you had an account<button onClick={() => props.onFormSwitch("Login")} type="button" className=" text-lime-400">Login hear</button></p>
                 </div>
@@ -126,4 +119,4 @@ function Registra(props) {
         </div>
     );
 }
-export default Registra;
+export default Register;

@@ -12,7 +12,9 @@ function Login(props) {
             email,
             password,
         }
-        axios.post(`https://x8ki-letl-twmt.n7.xano.io/api:Wnz-Lmv_/auth/login`, data)
+        console.log("Request data:", data);
+
+        axios.post(`https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/login`, data)
         .then(
             resp => {
                 console.log(resp);
@@ -21,7 +23,10 @@ function Login(props) {
         .catch(
             err => {
             console.log('Login failed:', err);
+            if (err.response.status === 401 || err.response.status === 403) {
+                alert("Invalid email or password. Please try again.");             
             }
+        }
         )
     };
 
