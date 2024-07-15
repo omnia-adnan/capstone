@@ -1,5 +1,6 @@
 // import { useEffect } from "react";
 // import { Card } from "../Component/Card";
+import img from "../Images/Profile_avatar_placeholder_large.png"
 
 function Profile({setGitData, name}) {
 
@@ -13,7 +14,7 @@ function Profile({setGitData, name}) {
     return(
         <div className=" text-white m-4 mt-10 2xl:mt-32 flex-1 md:text-xl 2xl:text-7xl">
             <div className="text-center ">
-            <img src="https://cdn.pixabay.com/photo/2023/05/05/18/26/child-7972995_960_720.jpg" alt="" className=" object-cover rounded-full size-24 lg:size-32 2xl:size-[30rem] block ml-auto mr-auto border-2 border-lime-400"/>
+            <img src={img} alt="" className=" object-cover rounded-full size-24 lg:size-32 2xl:size-[30rem] block ml-auto mr-auto border-2 border-lime-400"/>
             <h1 className=" m-2 2xl:m-10">{'use name' || name}</h1>
             <div className="flex justify-center items-center text-center">
             <div>

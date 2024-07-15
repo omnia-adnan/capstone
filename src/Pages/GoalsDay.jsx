@@ -61,8 +61,8 @@ function GoalsDay() {
         </div>
         <div className="py-2 2xl:py-10 2xl:-ml-[6%] 2xl:mr-[6%]">
             <div className=" flex border-b-2 border-blue-500">
-                   <p className="relative p-[10px] 2xl:p-14 pl-3">Maintain weight</p>
-                   <p className="absolute right-3 2xl:right-[5%] pt-2 2xl:pt-14">100% Cal/d</p>
+                    <p className="relative p-[10px] 2xl:p-14 pl-3">Maintain weight</p>
+                    <p className="absolute right-3 2xl:right-[5%] pt-2 2xl:pt-14">100% Cal/d</p>
             </div>
             <div className=" flex border-b-2 border-blue-500">
                     <p className="relative p-[10px] 2xl:p-14 pl-3">Mild weight loss 0.25 kg/week </p>
