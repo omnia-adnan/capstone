@@ -19,8 +19,8 @@ module.exports = {
       fontSize: {
         'clamp': [ 'clamp(1rem, 10vw, 2rem)', {
           lineHeight: '2rem',
-          letterSpacing: '-0.01em',
-          fontWeight: '500',
+          letterSpacing: '0.01em',
+          fontWeight: '400',
         }],
   },
   },

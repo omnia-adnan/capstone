@@ -7,6 +7,7 @@ import GoalsDay from "./Pages/GoalsDay";
 import Registra from "./Pages/Registra";
 import Login from "./Pages/Login";
 import { useState } from "react";
+import WelcomePage from "./Pages/WelcomePage";
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
   const toggelForm = (formName) => {
     setCurrentForm(formName);
   };
-
+  
   return (
     <div className="bg-blue-950 min-h-screen font-Handlee">
     <BrowserRouter>
@@ -28,6 +29,7 @@ function App() {
       <Route path="/" element={<Home/>} />
       <Route path="/Profile" element={<Profile/>} />
       <Route path="/GoalsDay" element={<GoalsDay/>} />
+      <Route path="/WelcomePage" element={<WelcomePage/>} />
       <Route path="/Calendar" element={<Calendar/>} />
       <Route path="/Registra" 
       element={

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useState } from "react";
 // import img from "../Images/mother-429158_1280.jpg"
 import axios from "axios";
@@ -10,7 +11,7 @@ function Register(props) {
     const [age, setAge] = useState("");
     const [weight, setWeight] = useState("");
     const [height, setHeight] = useState("");
-    const [gender, setGender] = useState("")
+    const [gender, setGender] = useState("");
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
@@ -23,21 +24,25 @@ function Register(props) {
             gender,
             email,
             password,
-        }
+        };
+        
         axios.post(`https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/signup`, data)
-        .then(
-            resp => {
-                console.log(resp);
-        navigate('/Profile')
-
+        .then(resp => {
+            console.log('Response:', resp);
+            const authToken = resp.data.authToken;
+            if (authToken) {
+                localStorage.setItem('authToken', authToken);
+                console.log('Token stored:', authToken);
+                navigate('/WelcomePage');
+            } else {
+                console.error('Token is missing in the response');
             }
-        )
-        .catch(
-            err => {
-            console.log('signup failed:', err);
-            }
-        )
+        })
+        .catch(err => {
+            console.error('Signup failed:', err);
+        });
     };
+    
     
     return(
         <div className="text-center">
@@ -100,8 +105,6 @@ function Register(props) {
                             <button type="submit" className="px-6 w-60 sm:w-[16rem] bg-lime-400 py-1 shadow-lg shadow-lime-400 border border-black rounded-3xl mb-6 text-black 2xl:py-3 2xl:w-1/3 2xl:rounded-full 2xl:text-7xl">Register</button>
                     </form>
                 </div>
-        //     </div>
-        // </div>
     );
 }
 export default Register;

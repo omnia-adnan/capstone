@@ -96,6 +96,11 @@ function Navbar() {
                         {/* <span className={`w-28 rounded-full bg-gray-300 hover:bg-blue-950 hover:text-blue-100 text-center items-center drop-shadow-xl 2xl:w-96 2xl:h-24 2xl:pt-4`}>Log in</span> */}
                     </Link>
                 </li>
+                <button className="uppercase rounded-full hover:w-11/12 hover:mr-auto 
+                hover:ml-auto transition duration-150 ease-in-out hover:bg-blue-950
+                hover:text-blue-100 hover:shadow-[0_2px_1px_1px_rgba(200,255,202,0.5),0_4px_18px_0_rgba(200,255,202,0.5)]
+                border-2 border-black w-1/2 sm:w-11/12 2xl:w-auto sm:ml-2" type="button">Log out</button>
+                <Link to="/WelcomePage"></Link>
             </ul>
         </nav>
     </div>

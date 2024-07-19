@@ -1,21 +1,13 @@
-// import { useEffect } from "react";
-// import { Card } from "../Component/Card";
 import img from "../Images/Profile_avatar_placeholder_large.png"
 
-function Profile({setGitData, name}) {
+function Profile() {
 
-    // useEffect(() =>{
-    //     fetch("https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/user")
-    //     .then((data) => data.json())
-    //     .then(json => setGitData(json));
-    
-    //     }, []);
 
     return(
         <div className=" text-white m-4 mt-10 2xl:mt-32 flex-1 md:text-xl 2xl:text-7xl">
-            <div className="text-center ">
+            <div className="text-center">
             <img src={img} alt="" className=" object-cover rounded-full size-24 lg:size-32 2xl:size-[30rem] block ml-auto mr-auto border-2 border-lime-400"/>
-            <h1 className=" m-2 2xl:m-10">{'use name' || name}</h1>
+            <h1 className=" m-2 2xl:m-10">{'use name'}</h1>
             <div className="flex justify-center items-center text-center">
             <div>
                 <div className="bg-purple-500 rounded-bl-2xl rounded-tr-2xl 2xl:rounded-bl-4xl 2xl:rounded-tr-4xl block mb-[4%] text-white p-4 2xl:p-14 size-[5rem] 2xl:size-[40rem]
@@ -60,9 +52,6 @@ function Profile({setGitData, name}) {
             </div>
             </div>
         </div>
-        {/* <div className="hidden sm:grid sm:grid-cols-2 gap-3">
-        <Card title="lorem" description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. dignissimos voluptate voluptas dolorem, culpa eveniet. Dolores?"/>
-        </div> */}
     </div>
     );
 }

@@ -18,6 +18,8 @@ function Home() {
         .then(json => setGitData(json));
         console.log(setGitData);
         }, []);
+
+        
     const herosSection = [
         "https://www.youtube.com/watch?v=mMHVEFWNLMc",
         "https://www.youtube.com/watch?v=orVIPr25ivo",
