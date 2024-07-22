@@ -1,62 +1,47 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 function GoalsDay() {
+    const [todos, setTodos] = useState([]);
+    const navigate = useNavigate();
+
+    const handleDoneButton = () => {
+        navigate('/FinishWorkoutpage')
+    }
+    
+    useEffect(() =>{
+        fetch("https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/todo_day")
+        .then((data) => data.json())
+        .then(json => setTodos(json));
+        console.log(todos);
+        }, [todos]);
+
+        const today = new Date();
+        const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const currentDayName = daysOfWeek[today.getDay()]; 
+        console.log(currentDayName); 
+
     return(
         <div  className="sm:flex 2xl:text-7xl flex flex-col text-white">
-            <div className="sm:flex gap-20">
+            <div className="lg:flex gap-20">
             <img src="https://cdn.pixabay.com/photo/2021/01/01/16/06/hand-5879027_1280.jpg" alt="healthy"
                 className="h-auto sm:h-[calc(100vh_-_15rem)] 2xl:h-[calc(100vh_-_60rem)] sm:mt-3 2xl:mt-24 2xl:-ml-[6%] max-w-full rounded-xl"
             />
         <div className="m-2 sm:mt-24"> 
         <div className=" text-white w-full h-auto p-1">
-            <lable>
-            Water <br /> 250 l in day
-            <input 
-            type="checkbox"
-            className=" float-right"
-            required
-            />
-            </lable>
+            {todos.filter((item) => item.days === currentDayName).map((item) => 
+                <>
+                <p>{item.title}</p>
+                <p>{item.description}</p>
+                <input
+                        type="checkbox"
+                        className=" float-right "
+                        required />
+                </>
+            )}
         </div>
-        <div className=" text-white w-full h-auto p-1">
-            <lable>
-            Breakfast <br />250 g beoten and 100 g Starches
-            <input 
-            type="checkbox"
-            className=" float-right"
-            required
-            />
-            </lable>
-        </div>
-        <div className=" text-white w-full h-auto p-1">
-            <lable>
-            Lunch <br />250 g beoten and 100 g Starches
-            <input 
-            type="checkbox"
-            className=" float-right"
-            required
-            />
-            </lable>
-        </div>
-        <div className=" text-white w-full h-auto p-1">
-            <lable>
-            Dinner <br />250 g beoten and 100 g Starches
-            <input 
-            type="checkbox"
-            className=" float-right"
-            required
-            />
-            </lable>
-        </div>
-        <div className=" text-white w-full h-auto p-1">
-            <lable>
-            Sleep <br />10 hours
-            <input 
-            type="checkbox"
-            className=" float-right"
-            required
-            />
-            </lable>
-        </div>
-        <button type="submit" className=" w-9/12 h-11/12 bg-lime-400 rounded-full">Done</button>
+        <button type="submit" disabled={!handleDoneButton()} className=" w-9/12 h-11/12 bg-lime-400 rounded-full">Done</button>
         </div>
         </div>
         <div className="py-2 2xl:py-10 2xl:-ml-[6%] 2xl:mr-[6%]">

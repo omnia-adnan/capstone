@@ -13,26 +13,58 @@ function Login(props) {
         const data = {
             email,
             password,
-        }
+        };
         console.log("Request data:", data);
-
-        axios.post(`https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/login`, data)
-        .then(
-            resp => {
-                console.log(resp);
-                navigate('/WelcomePage')
-            }
-        )
-        .catch(
-            err => {
-            console.log('Login failed:', err);
-            if (err.response.status === 401 || err.response.status === 403) {
-                alert("Invalid email or password. Please try again.");             
-            }
-        }
-        )
+    
+        axios.post('https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/login', data)
+            .then(resp => {
+                console.log('Full Response:', resp);
+                const authToken = resp.data.authToken;
+                
+                if (authToken) {
+                    localStorage.setItem('authToken', authToken);
+                    console.log('Token stored:', authToken);
+    
+                    // Fetch user data after storing the token
+                    fetchUserData(authToken);
+                } else {
+                    console.error('Token is missing in the response');
+                }
+            })
+            .catch(err => {
+                console.log('Login failed:', err);
+                if (err.response && (err.response.status === 401 || err.response.status === 403)) {
+                    alert("Invalid email or password. Please try again.");
+                }
+            });
     };
-
+    
+    const fetchUserData = (token) => {
+        axios.get('https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/user', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(resp => {
+            console.log('User Data Response:', resp);
+            const userData = resp.data; // Adjust this if needed based on response structure
+            
+            if (userData) {
+                localStorage.setItem('userData', JSON.stringify(userData));
+                console.log('User data stored:', userData);
+                navigate('/WelcomePage');
+            } else {
+                console.error('User data is missing in the response');
+            }
+        })
+        .catch(err => {
+            console.error('Fetching user data failed:', err);
+            if (err.response && err.response.status === 404) {
+                alert("User data not found. Please check the endpoint.");
+            }
+        });
+    };
+    
     return(
         <div className="block ml-auto mr-auto mt-auto mb-auto text-lg text-center">
         <form onSubmit={handleSubmit}>

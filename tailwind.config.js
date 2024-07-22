@@ -11,7 +11,7 @@ module.exports = {
         'bg-lime-400': '#C8FF71',
       },
       fontFamily: {
-        'Handlee': ['EB Garamond', 'serif']
+        'Handlee': ['Poppins', 'sans-serif']
       },
       borderRadius: {
         '4xl': '12rem',

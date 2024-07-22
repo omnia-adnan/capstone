@@ -4,7 +4,6 @@ import img from '../Images/orange.webp';
 
 function WelcomePage() {
     const navigate = useNavigate();
-
     const handleButton = () => {
         navigate('/Profile')
     }

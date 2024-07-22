@@ -11,6 +11,12 @@ import img from "../Images/elephant.webp"
 
 function Navbar() {
     const [togglebar, setTogglebar] = useState(false);
+
+    const handleClickAway = () => {
+        setTogglebar(false);
+        console.log("clicked away");
+    };
+
     // const [user, setUser] = useState('')
     // const navigate = useNavigate(); 
     
@@ -28,10 +34,11 @@ function Navbar() {
                 </div>
                 <div className="size-7 mt-1"><img src={img} alt="GrowStrong" /></div>
             </span>
+            
             <div onClick={() => setTogglebar(!togglebar)} className=" absolute right-2 top-1.5 sm:hidden">
             {togglebar ? <IoCloseOutline className="size-6"/> : <HiMiniBars3BottomRight className="size-6"/>}             
             </div>
-        <nav id="nav" className={` duration-500 ease-in ${togglebar ? 'bg-lime-400 w-full p-3 pt-0 text-base' 
+        <nav id="nav" onBlur={handleClickAway} className={` duration-500 ease-in ${togglebar ? 'bg-lime-400 w-full p-3 pt-0 text-base' 
             :' hidden sm:flex rounded-lg 2xl:rounded-3xl bg-lime-400 h-[calc(100%_-_2rem)] mx-4 mt-4 w-[20%] 2xl:w-[15%] 2xl:p-16 2xl:mx-36 2xl:mt-28 2xl:h-[calc(100%_-_12rem)]'}`}>
             
             <ul className=" 2xl:text-6xl space-y-5 pt-5 sm:pt-11">
@@ -101,6 +108,7 @@ function Navbar() {
                 hover:text-blue-100 hover:shadow-[0_2px_1px_1px_rgba(200,255,202,0.5),0_4px_18px_0_rgba(200,255,202,0.5)]
                 border-2 border-black w-1/2 sm:w-11/12 2xl:w-auto sm:ml-2" type="button">Log out</button>
                 <Link to="/WelcomePage"></Link>
+                <Link to="/FinishWorkoutpage"></Link>
             </ul>
         </nav>
     </div>

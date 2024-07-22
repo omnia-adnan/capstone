@@ -8,7 +8,7 @@ import Registra from "./Pages/Registra";
 import Login from "./Pages/Login";
 import { useState } from "react";
 import WelcomePage from "./Pages/WelcomePage";
-
+import FinishWorkoutpage from "./Pages/FinishWorkoutpage";
 
 function App() {
   const [currentForm, setCurrentForm] = useState('Registra');
@@ -30,6 +30,7 @@ function App() {
       <Route path="/Profile" element={<Profile/>} />
       <Route path="/GoalsDay" element={<GoalsDay/>} />
       <Route path="/WelcomePage" element={<WelcomePage/>} />
+      <Route path="/FinishWorkoutpage" element={<FinishWorkoutpage/>} />
       <Route path="/Calendar" element={<Calendar/>} />
       <Route path="/Registra" 
       element={

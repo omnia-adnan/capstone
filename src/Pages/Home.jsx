@@ -3,10 +3,7 @@ import ReactPlayer from "react-player/youtube";
 import { Card } from "../Component/Card";
 import '../style.css';
 import { Information } from "../Component/Information";
-// import { useNavigate } from "react-router-dom";
-// import axios from "axios";
 import img from "../Images/fireman.webp";
-// import img2 from "../Images/ai-generated2.webp";
 
 function Home() {
     // const [video, setVideo] = useState(0);
@@ -68,11 +65,10 @@ function Home() {
             If a child you for does not like a new food, don't be upset. Children often need to see a new food many times before they will try it."/>
             </div>
             <div className="sm:flex">
-            {/* <img src={img2} alt="carcter" className="sm:size-auto 2xl:size-1/5 2xl:ml-auto 2xl:mr-auto"/> */}
             <img src={img} alt="carcter" className="sm:size-auto 2xl:size-1/3 2xl:ml-auto 2xl:mr-auto"/>
             </div>
         </div>
-        <div className="grid sm:grid-cols-2 2xl:grid-cols-3 gap-3 2xl:gap-8 md:float-right">
+        <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-3 2xl:gap-8 md:float-right">
         {gitData.map((data) => (
         <Card key={data.user} title={data.title} description={data.description} url={data.url}/>
         ))}
