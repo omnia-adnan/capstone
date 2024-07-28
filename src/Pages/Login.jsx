@@ -18,12 +18,11 @@ function Login(props) {
         console.log("Request data:", data);
         axios.post(`https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/login`, data)
         .then(
+            
             resp => {
                 console.log(resp);
-                localStorage.setItem(
-                    "authToken",
-                    JSON.stringify(data)
-                );
+                const authToken = resp.data.authToken;
+                localStorage.setItem('authToken', authToken);
                 navigate('/WelcomePage')
             }
         )

@@ -1,29 +1,29 @@
-import { useEffect, useState } from "react";
-import ReactPlayer from "react-player/youtube";
-import { Card } from "../Component/Card";
-import '../style.css';
-import { Information } from "../Component/Information";
-import img from "../Images/fireman.webp";
-import CalorieCalculator from "../Component/CalorieCalculator";
+// import { useEffect, useState } from "react";
+// import ReactPlayer from "react-player/youtube";
+// import { Card } from "../Component/Card";
+// import '../style.css';
+// import { Information } from "../Component/Information";
+// import img from "../Images/fireman.webp";
+// import CalorieCalculator from "../Component/CalorieCalculator";
 
 
 function Home() {
     // const [video, setVideo] = useState(0);
-    const [gitData, setGitData] = useState([]);
+    // const [gitData, setGitData] = useState([]);
 
-    useEffect(() =>{
-        fetch("https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/article_link")
-        .then((data) => data.json())
-        .then(json => setGitData(json));
-        console.log(setGitData);
-        }, []);
+    // useEffect(() =>{
+    //     fetch("https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/article_link")
+    //     .then((data) => data.json())
+    //     .then(json => setGitData(json));
+    //     console.log(setGitData);
+    //     }, []);
 
         
-    const herosSection = [
-        "https://www.youtube.com/watch?v=orVIPr25ivo",
-        "https://www.youtube.com/watch?v=mMHVEFWNLMc",
-        "https://www.youtube.com/watch?v=Vpx-RlF0AcA",
-    ]
+    // const herosSection = [
+    //     "https://www.youtube.com/watch?v=orVIPr25ivo",
+    //     "https://www.youtube.com/watch?v=mMHVEFWNLMc",
+    //     "https://www.youtube.com/watch?v=Vpx-RlF0AcA",
+    // ]
 
     // const randomHero = e => {
     //     const len = herosSection.length;
@@ -31,8 +31,9 @@ function Home() {
     //         };
 
     return(
-        <div className="m-2">
-        <div className="video-container" style={{ position: 'relative', paddingTop: '56.25%'}}>
+        <div>
+            <h1 className="2xl:text-7xl"> home </h1>
+        {/* <div className="video-container" style={{ position: 'relative', paddingTop: '56.25%'}}>
             <ReactPlayer
             className="react-player"
             url={herosSection}
@@ -77,7 +78,7 @@ function Home() {
         <Card key={data.user} title={data.title} description={data.description} url={data.url}/>
         ))}
         </div>
-        </div>
+        </div> */}
         </div>
     );
 }

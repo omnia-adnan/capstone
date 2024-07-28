@@ -30,7 +30,7 @@ function GoalsDay() {
                 className="h-auto sm:h-[calc(100vh_-_15rem)] 2xl:h-[calc(100vh_-_60rem)] sm:mt-3 2xl:mt-24 2xl:-ml-[6%] max-w-full rounded-xl"
             />
         <div className="m-2 sm:mt-24"> 
-        <div className=" text-white w-full h-auto p-1">
+        {/* <div className=" text-white w-full h-auto p-1">
             {todos.filter((item) => item.days === currentDayName).map((item) => 
                 <>
                 <p>{item.title}</p>
@@ -44,7 +44,7 @@ function GoalsDay() {
                     </div>
                 </>
             )}
-        </div>
+        </div> */}
         <button type="submit" onClick={handleDoneButton} className=" w-9/12 h-11/12 bg-lime-400 rounded-full">Done</button>
         </div>
         </div>

@@ -30,10 +30,8 @@ function Register(props) {
         .then(
             resp => {
                 console.log(resp);
-                localStorage.setItem(
-                    "authToken",
-                    JSON.stringify(data)
-                );
+                const authToken = resp.data.authToken;
+                localStorage.setItem("authToken",authToken);
                 navigate('/Profile')
             }
         )
