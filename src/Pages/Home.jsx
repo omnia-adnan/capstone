@@ -1,7 +1,7 @@
 // import { useEffect, useState } from "react";
-// import ReactPlayer from "react-player/youtube";
+import ReactPlayer from "react-player/youtube";
 // import { Card } from "../Component/Card";
-// import '../style.css';
+import '../style.css';
 // import { Information } from "../Component/Information";
 // import img from "../Images/fireman.webp";
 // import CalorieCalculator from "../Component/CalorieCalculator";
@@ -19,11 +19,11 @@ function Home() {
     //     }, []);
 
         
-    // const herosSection = [
-    //     "https://www.youtube.com/watch?v=orVIPr25ivo",
-    //     "https://www.youtube.com/watch?v=mMHVEFWNLMc",
-    //     "https://www.youtube.com/watch?v=Vpx-RlF0AcA",
-    // ]
+    const herosSection = [
+        "https://www.youtube.com/watch?v=orVIPr25ivo",
+        "https://www.youtube.com/watch?v=mMHVEFWNLMc",
+        "https://www.youtube.com/watch?v=Vpx-RlF0AcA",
+    ]
 
     // const randomHero = e => {
     //     const len = herosSection.length;
@@ -32,8 +32,7 @@ function Home() {
 
     return(
         <div>
-            <h1 className="2xl:text-7xl"> home </h1>
-        {/* <div className="video-container" style={{ position: 'relative', paddingTop: '56.25%'}}>
+        <div className="video-container" style={{ position: 'relative', paddingTop: '56.25%'}}>
             <ReactPlayer
             className="react-player"
             url={herosSection}
@@ -44,6 +43,7 @@ function Home() {
             height="100%"
             />
         </div>
+        {/* 
         <div className="content">
         <div>
             <div className="size-full text-justify">

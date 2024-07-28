@@ -17,10 +17,14 @@ module.exports = {
         '4xl': '12rem',
       },
       fontSize: {
-        'clamp': [ 'clamp(1rem, 10vw, 2rem)', {
+        'clamp': [ 'clamp(1rem, 20vh, 2.5rem)', {
           lineHeight: '2rem',
           letterSpacing: '0.01em',
           fontWeight: '400',
+        }],
+        '10xl': [ '10rem', {
+          lineHeight: '8rem',
+          letterSpacing: '0.01em',
         }],
   },
   },

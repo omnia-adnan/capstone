@@ -1,6 +1,6 @@
-.video-container {
+/* .video-container {
   margin: 15px 0;
-}
+} */
 nav{
   position: fixed;
   z-index: 1;
@@ -10,11 +10,11 @@ nav{
     margin: 15px 0;
   }
 }
-@media only screen and (min-width: 160em) {
+@media only screen and (min-width: 40em) {
   .video-container {
     margin: 2.7% 0;
-    margin-left: -8%;
     margin-right: 3%;
+    margin-top: 1rem;
     padding-bottom: 7%;
   }
   .content{
