@@ -8,66 +8,38 @@ function Login(props) {
     const [password, setPassword] = useState("");
     const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
+    
+    const handleLoginSubmit = (e) => {
         e.preventDefault();
         const data = {
             email,
             password,
-        };
+        }
         console.log("Request data:", data);
-    
-        axios.post('https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/login', data)
-            .then(resp => {
-                console.log('Full Response:', resp);
-                const authToken = resp.data.authToken;
-                
-                if (authToken) {
-                    localStorage.setItem('authToken', authToken);
-                    console.log('Token stored:', authToken);
-    
-                    // Fetch user data after storing the token
-                    fetchUserData(authToken);
-                } else {
-                    console.error('Token is missing in the response');
-                }
-            })
-            .catch(err => {
-                console.log('Login failed:', err);
-                if (err.response && (err.response.status === 401 || err.response.status === 403)) {
-                    alert("Invalid email or password. Please try again.");
-                }
-            });
-    };
-    
-    const fetchUserData = (token) => {
-        axios.get('https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/user', {
-            headers: {
-                'Authorization': `Bearer ${token}`
+        axios.post(`https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/login`, data)
+        .then(
+            resp => {
+                console.log(resp);
+                localStorage.setItem(
+                    "authToken",
+                    JSON.stringify(data)
+                );
+                navigate('/WelcomePage')
             }
-        })
-        .then(resp => {
-            console.log('User Data Response:', resp);
-            const userData = resp.data; // Adjust this if needed based on response structure
-            
-            if (userData) {
-                localStorage.setItem('userData', JSON.stringify(userData));
-                console.log('User data stored:', userData);
-                navigate('/WelcomePage');
-            } else {
-                console.error('User data is missing in the response');
+        )
+        .catch(
+            err => {
+            console.log('Login failed:', err);
+            if (err.response.status === 401 || err.response.status === 403) {
+                alert("Invalid email or password. Please try again.");             
             }
-        })
-        .catch(err => {
-            console.error('Fetching user data failed:', err);
-            if (err.response && err.response.status === 404) {
-                alert("User data not found. Please check the endpoint.");
-            }
-        });
+        }
+        )
     };
     
     return(
         <div className="block ml-auto mr-auto mt-auto mb-auto text-lg text-center">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleLoginSubmit}>
         <p  className=" text-clamp 2xl:text-9xl text-white mt-7 2xl:mt-96 mb-3 2xl:mb-14" >Welcome Back</p>
         <p className="mb-6 2xl:mb-20 text-base 2xl:text-7xl text-white">If you don't have an account<button onClick={() => props.onFormSwitch("Registra")} type="submit" className=" text-lime-400">Regist hear</button></p>
             <input type="email"

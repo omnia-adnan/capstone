@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +16,7 @@ function GoalsDay() {
         .then((data) => data.json())
         .then(json => setTodos(json));
         console.log(todos);
-        }, [todos]);
+        }, []);
 
         const today = new Date();
         const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -34,14 +35,17 @@ function GoalsDay() {
                 <>
                 <p>{item.title}</p>
                 <p>{item.description}</p>
+                <div >
                 <input
                         type="checkbox"
-                        className=" float-right "
-                        required />
+                        className=" float-right"
+                        required 
+                        />
+                    </div>
                 </>
             )}
         </div>
-        <button type="submit" disabled={!handleDoneButton()} className=" w-9/12 h-11/12 bg-lime-400 rounded-full">Done</button>
+        <button type="submit" onClick={handleDoneButton} className=" w-9/12 h-11/12 bg-lime-400 rounded-full">Done</button>
         </div>
         </div>
         <div className="py-2 2xl:py-10 2xl:-ml-[6%] 2xl:mr-[6%]">

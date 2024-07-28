@@ -4,6 +4,8 @@ import { Card } from "../Component/Card";
 import '../style.css';
 import { Information } from "../Component/Information";
 import img from "../Images/fireman.webp";
+import CalorieCalculator from "../Component/CalorieCalculator";
+
 
 function Home() {
     // const [video, setVideo] = useState(0);
@@ -18,8 +20,8 @@ function Home() {
 
         
     const herosSection = [
-        "https://www.youtube.com/watch?v=mMHVEFWNLMc",
         "https://www.youtube.com/watch?v=orVIPr25ivo",
+        "https://www.youtube.com/watch?v=mMHVEFWNLMc",
         "https://www.youtube.com/watch?v=Vpx-RlF0AcA",
     ]
 
@@ -30,7 +32,6 @@ function Home() {
 
     return(
         <div className="m-2">
-        
         <div className="video-container" style={{ position: 'relative', paddingTop: '56.25%'}}>
             <ReactPlayer
             className="react-player"
@@ -44,7 +45,7 @@ function Home() {
         </div>
         <div className="content">
         <div>
-            <div className="size-full">
+            <div className="size-full text-justify">
             <Information description="A mother's love is a powerful force, profoundly sculpting a child's development. It extends far beyond infancy, 
             influencing various aspects of a child's life,
             from emotional well-being and social skills to cognitive growth and moral understanding.
@@ -67,6 +68,9 @@ function Home() {
             <div className="sm:flex">
             <img src={img} alt="carcter" className="sm:size-auto 2xl:size-1/3 2xl:ml-auto 2xl:mr-auto"/>
             </div>
+            <div>
+            <CalorieCalculator/>
+        </div>
         </div>
         <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-3 2xl:gap-8 md:float-right">
         {gitData.map((data) => (

@@ -14,7 +14,7 @@ function Register(props) {
     const [gender, setGender] = useState("");
     const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
+    const handleRegistraSubmit = (e) => {
         e.preventDefault();
         const data = {
             name,
@@ -24,20 +24,19 @@ function Register(props) {
             gender,
             email,
             password,
-        };
-        
+        }
+
         axios.post(`https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/signup`, data)
-        .then(resp => {
-            console.log('Response:', resp);
-            const authToken = resp.data.authToken;
-            if (authToken) {
-                localStorage.setItem('authToken', authToken);
-                console.log('Token stored:', authToken);
-                navigate('/WelcomePage');
-            } else {
-                console.error('Token is missing in the response');
+        .then(
+            resp => {
+                console.log(resp);
+                localStorage.setItem(
+                    "authToken",
+                    JSON.stringify(data)
+                );
+                navigate('/Profile')
             }
-        })
+        )
         .catch(err => {
             console.error('Signup failed:', err);
         });
@@ -48,7 +47,7 @@ function Register(props) {
         <div className="text-center">
                     <h2 className=" text-clamp text-white mt-7 mb-3 2xl:text-9xl 2xl:mt-96 2xl:mb-14">Regestar</h2>
                     <p className="mb-6 text-base text-white 2xl:mb-20 2xl:text-7xl">If already you had an account<button onClick={() => props.onFormSwitch("Login")} type="button" className=" text-lime-400">Login hear</button></p>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleRegistraSubmit}>
                             <input type="text"
                             name="name"
                             value={name}
