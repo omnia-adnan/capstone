@@ -39,10 +39,10 @@ function Navbar() {
             </div>
             
         <nav id="nav" onClick={handleClickAway} className={` duration-500 ease-in ${togglebar ? 'bg-lime-400 w-full p-3 pt-0 z-40 text-base absolute' 
-            :' hidden sm:flex rounded-lg bg-lime-400 h-[calc(100vh_-_2rem)] mx-4 xl:mx-8 mt-4 xl:mt-5 w-[20%] p-6'}`}>
+            :' hidden sm:flex rounded-lg bg-lime-400 h-[calc(100vh_-_2rem)] mx-4 xl:mx-8 mt-4 xl:mt-5 w-[22%] p-6'}`}>
             
             <ul>
-                <span className="flex justify-center text-2xl lg:text-3xl text-blue- pb-3 font-bold h-fit">
+                <span className="hidden sm:flex justify-center">
                     <Link to="/">
                         <img src={logo} alt="logo" className="object-cover p-1"/>
                     {/* <div className="flex">
@@ -54,7 +54,7 @@ function Navbar() {
                     </Link>
                 </span>
                 <li>
-                <Link to="/" className="flex items-center text-lg xl:text-2xl pb-2 text-violet-950 hover:duration-150 hover:font-extrabold hover:text-lime-50">
+                <Link to="/" className="flex items-center text-lg xl:text-2xl pb-2 mt-4 text-violet-950 hover:duration-150 hover:font-extrabold hover:text-lime-50">
                 <div className="size-[10%] sm:size-[23%]"><img src="https://cdn.pixabay.com/photo/2023/05/28/14/11/tree-house-8023784_1280.png" alt="" /></div>
                 <span className="pl-[4%]">Home</span>
                 </Link>
@@ -77,7 +77,7 @@ function Navbar() {
                 <span className="pl-[4%]">Calendar</span>
                     </Link>
                 </li>
-                { !user ? (
+                { user ? (
                 <li>
                         <Link to="/Login" className="flex justify-center items-center text-lg xl:text-2xl pl-[xt-violet-950 border border-black py-1 px-4 w-[80%] ml-1 rounded-full hover:duration-150 hover:font-bold hover:bg-lime-200" onClick={handleLogout}>
                             <div className="size-[7%] sm:size-[20%]"><img src="https://cdn.pixabay.com/photo/2014/04/03/00/33/hand-308667_1280.png" alt="" /></div>
@@ -87,13 +87,13 @@ function Navbar() {
                     ) : (
                         <>
                     <li>
-                        <Link to="/Registra" className="flex justify-center items-center text-lg xl:text-2xl pl-[xt-violet-950 border border-black py-1 px-4 w-[80%] ml-1 rounded-full hover:duration-150 hover:font-bold hover:bg-lime-200">
+                        <Link to="/Registra" className="flex justify-center items-center text-lg xl:text-2xl text-violet-950 border border-black w-[80%] ml-1 mb-3 rounded-full hover:duration-150 hover:font-bold hover:bg-lime-200">
                             <div className="size-[7%] sm:size-[20%]"><img src="https://cdn.pixabay.com/photo/2014/04/03/00/33/hand-308667_1280.png" alt="" /></div>
                             <span className="pl-[4%]"> Sign Up</span>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/Login" className="flex justify-center items-center text-lg xl:text-2xl pl-[xt-violet-950 border border-black py-1 px-4 w-[80%] ml-1 rounded-full hover:duration-150 hover:font-bold hover:bg-lime-200">
+                        <Link to="/Login" className="flex justify-center items-center text-lg xl:text-2xl text-violet-950 border border-black w-[80%] ml-1 rounded-full hover:duration-150 hover:font-bold hover:bg-lime-200">
                             <span className="pr-[4%]">Login </span>
                             <div className="size-[7%] sm:size-[20%]"><img src="https://cdn.pixabay.com/photo/2016/03/31/21/55/hand-1296726_1280.png" alt="" /></div>
                         </Link>

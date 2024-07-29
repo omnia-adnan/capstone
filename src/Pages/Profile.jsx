@@ -1,53 +1,56 @@
+import { useState } from "react";
 import img from "../Images/Profile_avatar_placeholder_large.png"
+import { GiWeight } from "react-icons/gi";
+import { GiBodyHeight } from "react-icons/gi";
+import { BiMaleFemale } from "react-icons/bi";
+import { GiAges } from "react-icons/gi";
 
 function Profile() {
+    const [imgUser, setImgUser] = useState(null);
 
 
     return(
         <div className=" text-white m-4 mt-10 2xl:mt-32 flex-1 md:text-xl 2xl:text-7xl">
-            <div className="text-center">
-            <img src={img} alt="" className=" object-cover rounded-full size-24 lg:size-32 2xl:size-[30rem] block ml-auto mr-auto border-2 border-lime-400"/>
+            <div className=" relative text-center">
+                <div className="relative inline-block">
+            <img 
+            src={imgUser ? URL.createObjectURL(imgUser) : img} 
+            alt="imgUser" 
+            className=" object-cover rounded-full size-24 lg:size-32 2xl:size-[30rem] block ml-auto mr-auto border-2 border-lime-400"/>
+            <input
+                type="file"
+                className="absolute inset-0 opacity-0 cursor-pointer"
+                onChange={(event) => {
+                console.log(event.target.files[0]); 
+                setImgUser(event.target.files[0]); 
+                }}
+            />
+            </div>
             <h1 className=" m-2 2xl:m-10">{'use name'}</h1>
-            <div className="flex justify-center items-center text-center">
+            <div className="flex justify-center items-center gap-10">
             <div>
-                <div className="bg-purple-500 rounded-bl-2xl rounded-tr-2xl 2xl:rounded-bl-4xl 2xl:rounded-tr-4xl block mb-[4%] text-white p-4 2xl:p-14 size-[6rem] 2xl:size-[40rem]
-                    shadow-[0_14px_9px_-4px_#3b71ca] transition duration-150 ease-in-out m-3 2xl:m-10
-                    hover:bg-purple-400 hover:shadow-[0_5px_10px_4px_rgba(59,113,202),0_4px_18px_0_rgba(59,113,202,0.2)] 
-                    focus:bg-primary-400 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
-                    focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),
-                    0_4px_18px_0_rgba(59,113,202,0.2)]">
-                    <h3>wight</h3>
-                <h4>50</h4>
+                <div className="mx-auto mt-5 border-2 border-purple-400 rounded-tl-3xl rounded-br-3xl overflow-hidden relative shadow-lg shadow-purple-400 p-5 lg:p-7">
+                    <GiWeight className="size-[2rem] block mx-auto"/>
+                    <h3 className="text-xl lg:text-2xl font-bold tracking-wide block ">Weight</h3>
+                    <h4 className="text-sm lg:text-lg font-medium tracking-wide block">50</h4>
                 </div>
-                <div className="bg-red-500 rounded-tl-2xl rounded-br-3xl 2xl:rounded-tl-4xl 2xl:rounded-br-4xl block mb-[4%] text-white p-4 2xl:p-14 size-[6rem] 2xl:size-[40rem] 
-                    shadow-[0_14px_9px_-4px_#3b71ca] transition duration-150 ease-in-out m-3 2xl:m-10
-                    hover:bg-red-400 hover:shadow-[0_5px_10px_4px_rgba(59,113,202),0_4px_18px_0_rgba(59,113,202,0.2)] 
-                    focus:bg-primary-400 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
-                    focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),
-                    0_4px_18px_0_rgba(59,113,202,0.2)]">
-                    <h3>hight</h3>
-                <h4>140</h4>
+                <div className="mx-auto mt-5 border-2 border-teal-400 rounded-tl-3xl rounded-br-3xl overflow-hidden relative shadow-lg shadow-teal-400 p-5 lg:p-7">
+                    <BiMaleFemale className="size-[2rem] block mx-auto"/>
+                    <h3 className="text-xl lg:text-2xl font-bold tracking-wide block ">Gander</h3>
+                    <h4 className="text-sm lg:text-lg font-medium tracking-wide block">female</h4>
                 </div>
-                </div>
+            </div>
             <div>
-            <div className="bg-teal-500 rounded-tl-2xl rounded-br-2xl 2xl:rounded-tl-4xl 2xl:rounded-br-4xl block mb-[4%] text-white p-4 2xl:p-14 size-[6rem] 2xl:size-[40rem] 
-                    shadow-[0_14px_9px_-4px_#3b71ca] transition duration-150 ease-in-out m-3 2xl:m-10
-                    hover:bg-teal-400 hover:shadow-[0_5px_10px_4px_rgba(59,113,202),0_4px_18px_0_rgba(59,113,202,0.2)] 
-                    focus:bg-primary-400 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
-                    focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),
-                    0_4px_18px_0_rgba(59,113,202,0.2)]">
-                    <h3>gander</h3>
-                <h4>female</h4>
+                <div className="mx-auto mt-5 border-2 border-orange-400 rounded-tl-3xl rounded-br-3xl overflow-hidden relative shadow-lg shadow-orange-400 p-5 lg:p-7">
+                    <GiBodyHeight className="size-[2rem] block mx-auto"/>
+                    <h3 className="text-xl lg:text-2xl font-bold tracking-wide block ">Height</h3>
+                    <h4 className="text-sm lg:text-lg font-medium tracking-wide block">140</h4>
                 </div>
                 
-                <div className="bg-orange-500 rounded-bl-2xl rounded-tr-2xl 2xl:rounded-bl-4xl 2xl:rounded-tr-4xl block mb-[4%] text-white p-4 2xl:p-14 size-[6rem] 2xl:size-[40rem]
-                    shadow-[0_14px_9px_-4px_#3b71ca] transition duration-150 ease-in-out m-3 2xl:m-10
-                    hover:bg-orange-400 hover:shadow-[0_5px_10px_4px_rgba(59,113,202),0_4px_18px_0_rgba(59,113,202,0.2)] 
-                    focus:bg-primary-400 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
-                    focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),
-                    0_4px_18px_0_rgba(59,113,202,0.2)]">
-                    <h3>age</h3>
-                <h4>5</h4>
+                <div className="mx-auto mt-5 border-2 border-pink-400 rounded-tl-3xl rounded-br-3xl overflow-hidden relative shadow-lg shadow-pink-400 p-5 lg:p-7">
+                    <GiAges className="size-[2rem] block mx-auto"/>
+                    <h3 className="text-xl lg:text-2xl font-bold tracking-wide block ">Age</h3>
+                    <h4  className="text-s lg:text-lg font-medium tracking-wide block">5</h4>
                 </div>
             </div>
             </div>
