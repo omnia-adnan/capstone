@@ -35,7 +35,7 @@ function CalorieCalculator() {
         setBmr(totalcalc.toFixed(2));
     }
     return(
-        <form className="block max-w-sm text-white rounded-lg p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+        <form className="block mx-3 sm:mx-auto max-w-sm text-white xl:text-xl 3xl:text-4xl rounded-lg p-6 mb-10 border border-black shadow-[0_2px_15px_-3px_#a3e635]">
             <label>
                 Your Gender 
             </label><br />
@@ -59,7 +59,7 @@ function CalorieCalculator() {
             max={120}
             required
             onChange={(e) => setAge(e.target.value)} 
-            className="m-3 text-black p-1 rounded-lg"
+            className="w-full px-8 py-2 rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
             />
             </label><br />
             <label>
@@ -69,7 +69,7 @@ function CalorieCalculator() {
             max={220}
             required
             onChange={(e) => setHeightCm(e.target.value)} 
-            className="m-3 text-black p-1 rounded-lg"
+            className="w-full px-8 py-2 rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
             />
             </label><br />
             <label>
@@ -79,11 +79,11 @@ function CalorieCalculator() {
             max={400}
             required
             onChange={(e) => setWeightKg(e.target.value)} 
-            className="m-3 text-black p-1 rounded-lg"
+            className="w-full px-8 py-2 rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
             />
             </label><br />
             <label> Workout in a Week
-            <select name="activity" className="my-4 text-black p-1 rounded-lg w-full" value={activity} onChange={(e) => setActivity(e.target.value)} required>
+            <select name="activity" className="w-full px-8 py-2 rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white text-black" value={activity} onChange={(e) => setActivity(e.target.value)} required>
                         <option value="/">Select your Activity</option>
                         <option value="1.2">Sedentary (Very littel or no exercise, and desk job)</option>
                         <option value="1.375">Lightly Active (Light exercise 1 to 3 days per week)</option>

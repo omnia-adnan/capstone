@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        '3xl': '2560px',
+      },
       colors: {
         'bg-blue-950': '#083168',
         'bg-blue-900': '#02367D',
@@ -15,6 +18,7 @@ module.exports = {
       },
       borderRadius: {
         '4xl': '12rem',
+        '5xl': '2rem',
       },
       fontSize: {
         'clamp': [ 'clamp(1rem, 20vh, 2.5rem)', {

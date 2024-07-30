@@ -70,7 +70,7 @@ function Login(props) {
                 <div className="my-6">
                     <button type="submit" className=" bg-lime-400 shadow-lg shadow-lime-400 border border-black w-full px-3 py-2 rounded-full focus:outline-none text-black">Log In</button>
                 </div>  
-                <p className="text-center text-sm">If you don't have an account<button onClick={() => props.onFormSwitch("Registra")} type="submit" className=" text-lime-400 font-semibold hover:underline focus:text-gray-800 focus:outline-none">Regist hear</button></p>
+                {/* <p className="text-center text-sm">If you don't have an account<button onClick={() => props.onFormSwitch("Registra")} type="submit" className=" text-lime-400 font-semibold hover:underline focus:text-gray-800 focus:outline-none">Regist hear</button></p> */}
             </form>
         </div>
     </div>

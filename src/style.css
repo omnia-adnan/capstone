@@ -17,8 +17,9 @@ nav{
     margin-top: 1rem;
     padding-bottom: 7%;
   }
-  .content{
-    margin-left: -8%;
-    margin-right: 3%;
+}
+@media only screen and (min-width: 2560px) {
+  .video-container{
+    margin-top: 4.8%;
   }
 }

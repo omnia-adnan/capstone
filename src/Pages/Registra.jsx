@@ -45,7 +45,7 @@ function Register(props) {
         
         <div className="text-center">
 <div class="flex justify-center">
-    <div class="max-w-screen-xl m-0 sm:m-10 text-white border-2 border-black shadow-lg sm:rounded-3xl shadow-lime-400 flex justify-center flex-1">
+    <div class="max-w-screen-xl m-0 sm:m-10 3xl:m-20 text-white border-2 border-black shadow-lg sm:rounded-3xl shadow-lime-400 flex justify-center flex-1">
         <div class="lg:w-1/2 xl:w-5/12 p-6 lg:p-12">
             <div class="lg:mt-12 flex flex-col items-center">
                 <h1 class="text-2xl xl:text-3xl font-extrabold">
@@ -107,7 +107,7 @@ function Register(props) {
                             placeholder="password"
                             className="w-full px-8 py-2 rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                             />
-                            <p className="mt-6 text-xs text-center">If already you had an account <button onClick={() => props.onFormSwitch("Login")} type="button" className=" text-lime-400">Login hear</button></p>
+                            {/* <p className="mt-6 text-xs text-center">If already you had an account <button onClick={() => props.onFormSwitch("Login")} type="button" className=" text-lime-400">Login hear</button></p> */}
                         <button
                             className="mt-5 tracking-wide font-semibold bg-lime-400 shadow-lg shadow-lime-400 border border-black text-black w-full py-2 rounded-full mb-2 hover:bg-lime-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                             <svg class="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2"
