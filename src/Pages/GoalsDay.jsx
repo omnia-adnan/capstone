@@ -15,7 +15,7 @@ function GoalsDay() {
         fetch("https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/todo_day")
         .then((data) => data.json())
         .then(json => setTodos(json));
-        console.log(todos);
+        console.log(setTodos);
         }, []);
 
         const today = new Date();
@@ -26,24 +26,34 @@ function GoalsDay() {
     return(
         <div  className="sm:flex 2xl:text-7xl flex flex-col text-white">
             <div className="lg:flex gap-20">
-            <img src="https://cdn.pixabay.com/photo/2021/01/01/16/06/hand-5879027_1280.jpg" alt="healthy"
-                className="h-auto sm:h-[calc(100vh_-_15rem)] 2xl:h-[calc(100vh_-_60rem)] sm:mt-3 2xl:mt-24 2xl:-ml-[6%] max-w-full rounded-xl"
-            />
-        <div className="m-2 sm:mt-24"> 
+                <p className="text-xl p-2 xl:px-3 text-center mb-5 font-semibold">
+                    Feeling 'hangry' is a real thing. Your brain needs a steady supply of glucose, 
+                    so eating regularly is crucial. Don't fear good fats, as they are essential for 
+                    maintaining brain and cell structure. Good fats can be found in olive oil, nuts, 
+                    seeds, and avocados.</p>
+        <div className="flex-1 m-2 sm:mt-24"> 
         {/* <div className=" text-white w-full h-auto p-1">
-            {todos.filter((item) => item.days === currentDayName).map((item) => 
-                <>
-                <p>{item.title}</p>
-                <p>{item.description}</p>
-                <div >
-                <input
-                        type="checkbox"
-                        className=" float-right"
-                        required 
-                        />
-                    </div>
-                </>
-            )}
+        {todos
+                            .filter((item) => 
+                                item.days === currentDayName &&
+                                ((item.age >= 1 && item.age <= 6) || 
+                                (item.age >= 7 && item.age <= 12) ||
+                                (item.age >= 13 && item.age <= 17))
+                            )
+                            .map((item) => (
+                                <div key={item.id}>
+                                    <p>{item.title}</p>
+                                    <p>{item.description}</p>
+                                    <div>
+                                        <input
+                                            type="checkbox"
+                                            className="float-right"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+                            ))
+                        }
         </div> */}
         <button type="submit" onClick={handleDoneButton} className=" w-9/12 h-11/12 bg-lime-400 rounded-full">Done</button>
         </div>

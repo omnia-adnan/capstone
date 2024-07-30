@@ -18,7 +18,7 @@ return (
             focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),
             0_4px_18px_0_rgba(59,113,202,0.2)]">Learn more ...</a>
             </div>
-            <img src={img3} alt="carcter" class="bg-cover size-[25%] p-1"/>
+            <img src={img3} alt="carcter" class="bg-cover size-[20%] p-1"/>
         </div>
     );
 };

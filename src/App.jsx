@@ -6,16 +6,17 @@ import Navbar from "./Component/Navbar";
 import GoalsDay from "./Pages/GoalsDay";
 import Registra from "./Pages/Registra";
 import Login from "./Pages/Login";
-// import { useState } from "react";
-import WelcomePage from "./Pages/WelcomePage";
-import FinishWorkoutpage from "./Pages/FinishWorkoutpage";
+import WelcomePage from "./SecoondaryPages/WelcomePage";
+import FinishWorkoutpage from "./SecoondaryPages/FinishWorkoutpage";
+import { useEffect } from "react";
+
 
 function App() {
-  // const [currentForm, setCurrentForm] = useState('Registra');
-
-  // const toggelForm = (formName) => {
-  //   setCurrentForm(formName);
-  // };
+  
+  useEffect(() => {
+    document.title = "GrowStrong";
+  }, [])
+  
   
   return (
     <div className="bg-blue-950 min-h-screen font-Handlee">

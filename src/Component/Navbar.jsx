@@ -25,12 +25,6 @@ function Navbar() {
             <span className=" sm:hidden flex bg-lime-400 z-40 text-blue-900 font-semibold">
                 <Link to="/">
                 <img src={logo} alt="logo" className="w-[38%] object-cover p-1"/>
-                {/* <div className="flex m-1">
-                <h1 className="text-pink-600 text-3xl -rotate-6">G</h1>
-                <h2 className="mt-2 -translate-x-1">row</h2>
-                <h1 className="text-orange-600 text-3xl -translate-x-1 rotate-6">S</h1>
-                <h2 className="mt-2 -translate-x-2">trong</h2>
-                </div> */}
                 </Link>
             </span>
             
@@ -44,42 +38,36 @@ function Navbar() {
             <ul>
                 <span className="hidden sm:flex justify-center">
                     <Link to="/">
-                        <img src={logo} alt="logo" className="object-cover p-1 3xl:w-[20rem]"/>
-                    {/* <div className="flex">
-                        <h1 className="text-pink-600 text-clamp xl:text-5xl -rotate-6">G</h1>
-                        <h2 className="mt-2 -translate-x-1">row</h2>
-                        <h1 className="text-orange- text-clamp xl:text-5xl -translate-x-1 rotate-6">S</h1>
-                        <h2 className="mt-2 -translate-x-2">trong</h2>
-                    </div> */}
+                        <img src={logo} alt="logo" className="p-4"/>
                     </Link>
                 </span>
                 <li>
-                <Link to="/" className="flex items-center text-sm xl:text-2xl 3xl:text-5xl pb-2 3xl:pb-8 mt-4 3xl:mt-8 text-violet-950 hover:duration-150 hover:font-extrabold hover:text-lime-50">
+                <Link to="/" className="flex items-center text-lg xl:text-2xl 3xl:text-6xl pb-2 3xl:pb-8 mt-4 text-violet-950 hover:duration-150 hover:font-extrabold hover:text-lime-50">
                 <div className="size-[10%] sm:size-[23%]"><img src="https://cdn.pixabay.com/photo/2023/05/28/14/11/tree-house-8023784_1280.png" alt="" /></div>
                 <span className="pl-[4%]">Home</span>
                 </Link>
                 </li>
                 <li>
-                <Link to="/Profile" className="flex items-center text-sm xl:text-2xl 3xl:text-5xl pb-2 3xl:pb-8 text-violet-950 hover:duration-150 hover:font-extrabold hover:text-lime-50">
+                <Link to="/Profile" className="flex items-center text-lg xl:text-2xl 3xl:text-6xl pb-2 3xl:pb-8 text-violet-950 hover:duration-150 hover:font-extrabold hover:text-lime-50">
                 <div className="size-[9%] sm:size-[20%]"><img src="https://cdn.pixabay.com/photo/2022/02/28/20/42/rabbit-7040066_960_720.png" alt="" /></div>
                 <span className="pl-[4%]">Profile</span>
                     </Link>
                 </li>
                 <li>
-                <Link to="/GoalsDay" className="flex items-center text-sm xl:text-2xl 3xl:text-5xl pb-2 3xl:pb-8 text-violet-950 hover:duration-150 hover:font-extrabold hover:text-lime-50">
+                <Link to="/GoalsDay" className="flex items-center text-lg xl:text-2xl 3xl:text-6xl pb-2 3xl:pb-8 text-violet-950 hover:duration-150 hover:font-extrabold hover:text-lime-50">
                 <div className="size-[9%] sm:size-[20%]"><img src="https://cdn.pixabay.com/photo/2023/04/12/01/47/cartoon-7918608_1280.png" alt="" /></div>
                 <span className="pl-[4%]">GoalsDay</span>
                     </Link>
                 </li>
                 <li>
-                    <Link to="/Calendar" className="flex items-center text-sm xl:text-2xl 3xl:text-5xl pb-2 3xl:pb-8 text-violet-950 hover:duration-150 hover:font-extrabold hover:text-lime-50">
+                    <Link to="/Calendar" className="flex items-center text-lg xl:text-2xl 3xl:text-6xl pb-2 3xl:pb-8 text-violet-950 hover:duration-150 hover:font-extrabold hover:text-lime-50">
                 <div className="size-[9%] sm:size-[20%]"><img src="https://cdn.pixabay.com/photo/2013/07/13/12/04/calendar-159098_1280.png" alt="" /></div>
                 <span className="pl-[4%]">Calendar</span>
                     </Link>
                 </li>
                 { user ? (
                     <li className="pb-2 3xl:pb-8">
-                        <Link to="/Login" className="flex justify-center items-center text-sm xl:text-2xl 3xl:text-5xl text-violet-950 border border-black py-1 px-4 w-[80%] ml-1 rounded-full hover:duration-150 hover:font-bold hover:bg-lime-200" onClick={handleLogout}>
+                        <Link to="/Login" className="flex justify-center items-center text-lg xl:text-2xl 3xl:text-6xl text-violet-950 border border-black py-1 px-4 w-[80%] ml-1 rounded-full hover:duration-150 hover:font-bold hover:bg-lime-200" onClick={handleLogout}>
                             <div className="size-[7%] sm:size-[20%]"><img src="https://cdn.pixabay.com/photo/2014/04/03/00/33/hand-308667_1280.png" alt="" /></div>
                             <span className="pl-[4%]"> Logout </span>
                         </Link>
@@ -87,13 +75,13 @@ function Navbar() {
                     ) : (
                         <>
                     <li className="pb-2 3xl:pb-8">
-                        <Link to="/Registra" className="flex justify-center items-center text-sm xl:text-2xl 3xl:text-5xl text-violet-950 border border-black w-[80%] ml-1 mb-3 rounded-full hover:duration-150 hover:font-bold hover:bg-lime-200">
+                        <Link to="/Registra" className="flex justify-center items-center text-lg xl:text-2xl 3xl:text-6xl text-violet-950 border border-black w-[80%] ml-1 mb-3 rounded-full hover:duration-150 hover:font-bold hover:bg-lime-200">
                             <div className="size-[7%] sm:size-[20%]"><img src="https://cdn.pixabay.com/photo/2014/04/03/00/33/hand-308667_1280.png" alt="" /></div>
                             <span className="pl-[4%]"> Sign Up</span>
                         </Link>
                     </li>
                     <li className="pb-2 3xl:pb-8">
-                        <Link to="/Login" className="flex justify-center items-center text-sm xl:text-2xl 3xl:text-5xl text-violet-950 border border-black w-[80%] ml-1 rounded-full hover:duration-150 hover:font-bold hover:bg-lime-200">
+                        <Link to="/Login" className="flex justify-center items-center text-lg xl:text-2xl 3xl:text-6xl text-violet-950 border border-black w-[80%] ml-1 rounded-full hover:duration-150 hover:font-bold hover:bg-lime-200">
                             <span className="pr-[4%]">Login </span>
                             <div className="size-[7%] sm:size-[20%]"><img src="https://cdn.pixabay.com/photo/2016/03/31/21/55/hand-1296726_1280.png" alt="" /></div>
                         </Link>
