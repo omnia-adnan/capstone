@@ -9,6 +9,7 @@ import Login from "./Pages/Login";
 import WelcomePage from "./SecoondaryPages/WelcomePage";
 import FinishWorkoutpage from "./SecoondaryPages/FinishWorkoutpage";
 import { useEffect } from "react";
+import { ContextApiAuth } from "./Component/ContextApi";
 
 
 function App() {
@@ -17,9 +18,9 @@ function App() {
     document.title = "GrowStrong";
   }, [])
   
-  
   return (
     <div className="bg-blue-950 min-h-screen font-Handlee">
+      <ContextApiAuth>
     <BrowserRouter>
     <div className="sm:flex">
     <div className="sm:w-1/4">
@@ -29,16 +30,17 @@ function App() {
     <Routes>
       <Route path="/" element={<Home/>} />
       <Route path="/Profile" element={<Profile/>} />
+      <Route path="/Login" element={<Login/>} />
+      <Route path="/Registra" element={<Registra/>}/>
       <Route path="/GoalsDay" element={<GoalsDay/>} />
       <Route path="/WelcomePage" element={<WelcomePage/>} />
       <Route path="/FinishWorkoutpage" element={<FinishWorkoutpage/>} />
       <Route path="/Calendar" element={<Calendar/>} />
-      <Route path="/Registra" element={<Registra/>}/>
-      <Route path="/Login" element={<Login/>} />
     </Routes>
     </div>
     </div>
     </BrowserRouter>
+    </ContextApiAuth>
     </div>
   );
 }
