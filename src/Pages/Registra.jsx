@@ -19,6 +19,7 @@ function Register() {
         setGender,
         setEmail,
         setPassword,
+        setIsLoggedIn,
         setShowProfile,
     
     } = useAuth(ContextApi);
@@ -42,7 +43,8 @@ function Register() {
                 console.log(resp);
                 const authToken = resp.data.authToken;
                 localStorage.setItem("authToken",authToken);
-                navigate('/WelcomePage')
+                setIsLoggedIn(true);
+                navigate('/WelcomePage');
             }
         )
         .catch(err => {
