@@ -96,7 +96,7 @@ function Navbar() {
                     : 
                         <>
                             <li className="pb-2 3xl:pb-8">
-                                <Link to="/Registra" className="flex justify-center items-center text-lg xl:text-2xl 3xl:text-6xl text-violet-950 border border-black w-[80%] ml-1 mb-3 rounded-full hover:duration-150 hover:font-bold hover:bg-lime-200">
+                                <Link to="/SignUp" className="flex justify-center items-center text-lg xl:text-2xl 3xl:text-6xl text-violet-950 border border-black w-[80%] ml-1 mb-3 rounded-full hover:duration-150 hover:font-bold hover:bg-lime-200">
                                     <div className="size-[7%] sm:size-[20%]">
                                         <img src="https://cdn.pixabay.com/photo/2014/04/03/00/33/hand-308667_1280.png" alt="" />
                                     </div>

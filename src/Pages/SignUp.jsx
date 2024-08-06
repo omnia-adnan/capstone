@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ContextApi, useAuth } from "../Component/ContextApi";
 
 
-function Register() {
+function SignUp() {
     const { name,
         age,
         weight,
@@ -147,4 +147,4 @@ function Register() {
     </div>
     );
 }
-export default Register;
+export default SignUp;

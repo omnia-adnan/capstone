@@ -4,7 +4,7 @@ import Profile from "./Pages/Profile";
 import Calendar from "./Pages/Calendar";
 import Navbar from "./Component/Navbar";
 import GoalsDay from "./Pages/GoalsDay";
-import Registra from "./Pages/Registra";
+import SignUp from "./Pages/SignUp";
 import Login from "./Pages/Login";
 import WelcomePage from "./SecoondaryPages/WelcomePage";
 import FinishWorkoutpage from "./SecoondaryPages/FinishWorkoutpage";
@@ -31,7 +31,7 @@ function App() {
       <Route path="/" element={<Home/>} />
       <Route path="/Profile" element={<Profile/>} />
       <Route path="/Login" element={<Login/>} />
-      <Route path="/Registra" element={<Registra/>}/>
+      <Route path="/SignUp" element={<SignUp/>}/>
       <Route path="/GoalsDay" element={<GoalsDay/>} />
       <Route path="/WelcomePage" element={<WelcomePage/>} />
       <Route path="/FinishWorkoutpage" element={<FinishWorkoutpage/>} />

@@ -25,17 +25,16 @@ function GoalsDay() {
     return(
         <div  className="sm:flex 2xl:text-7xl flex flex-col text-white">
             <div className="lg:flex gap-20">
-                <p className="text-xl p-2 xl:px-3 text-start mb-5 font-semibold">
+                <p className="text-xl p-2 text-justify mb-5 3xl:mt-24 font-semibold lg:w-1/2">
                     Feeling 'hangry' is a real thing. Your brain needs a steady supply of glucose, 
                     so eating regularly is crucial. Don't fear good fats, as they are essential for 
                     maintaining brain and cell structure. Good fats can be found in olive oil, nuts, 
                     seeds, and avocados.</p>
-        <div className="flex-1 m-2 sm:mt-24"> 
-        <div className=" text-white w-full h-auto p-1">
+        <div className="flex-1 m-2 3xl:mt-24"> 
+        <div className=" text-white w-full p-1">
         {todos.filter((item) => item.days === currentDayName).map((item) => (
                                 <div key={item.id}>
                                     <h1 className="text-xl text-lime-400">{item.title}</h1>
-                                    <p>{item.description}</p>
                                     <div>
                                         <input
                                             type="checkbox"
@@ -43,6 +42,7 @@ function GoalsDay() {
                                             required
                                         />
                                     </div>
+                                    <p>{item.description}</p>
                                 </div>
                             ))
                         }
