@@ -17,6 +17,8 @@ export function ContextApiAuth(props) {
     const [user, setUser] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
+    const [todoDays, setTodoDays] = useState([]);
+    const [selectedAgeGroup, setSelectedAgeGroup] = useState(null);
 
 useEffect(() => {
     const token = localStorage.getItem("authToken");
@@ -36,6 +38,8 @@ const value = {
     showProfile,
     user,
     isLoggedIn,
+    todoDays,
+    selectedAgeGroup,
     setName,
     setAge,
     setWeight,
@@ -46,6 +50,8 @@ const value = {
     setShowProfile,
     setUser,
     setIsLoggedIn,
+    setTodoDays,
+    setSelectedAgeGroup,
 };
 
     return (

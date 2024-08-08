@@ -59,7 +59,7 @@ function CalorieCalculator() {
             max={120}
             required
             onChange={(e) => setAge(e.target.value)} 
-            className="w-full px-8 py-2 rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+            className="w-full px-8 py-2 rounded-full mb-2 font-medium text-black bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
             />
             </label><br />
             <label>
@@ -69,7 +69,7 @@ function CalorieCalculator() {
             max={220}
             required
             onChange={(e) => setHeightCm(e.target.value)} 
-            className="w-full px-8 py-2 rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+            className="w-full px-8 py-2 rounded-full mb-2 font-medium text-black bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
             />
             </label><br />
             <label>
@@ -79,7 +79,7 @@ function CalorieCalculator() {
             max={400}
             required
             onChange={(e) => setWeightKg(e.target.value)} 
-            className="w-full px-8 py-2 rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+            className="w-full px-8 py-2 rounded-full mb-2 font-medium text-black bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
             />
             </label><br />
             <label> Workout in a Week
