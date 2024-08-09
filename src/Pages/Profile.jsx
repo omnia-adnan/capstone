@@ -14,9 +14,11 @@ function Profile() {
         weight,
         height,
         gender,
-    
     } = useAuth(ContextApi);
     const [imgUser, setImgUser] = useState(null);
+
+    
+    
 
 
     return(

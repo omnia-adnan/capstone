@@ -1,61 +1,30 @@
-import { useEffect, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../Component/ContextApi';
 
 function GoalsDay() {
     const { todoDays, setTodoDays } = useAuth();
-    const [filteredTodos, setFilteredTodos] = useState([]);
     const navigate = useNavigate();
 
     const handleDoneButton = () => {
         navigate('/FinishWorkoutpage');
     };
 
-    useEffect(() => {
-        const fetchTodos = async () => {
-        try {
-            const response = await fetch('https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/todo_day');
-            if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data = await response.json();
-            console.log('API Response:', data); 
-            setTodoDays(data);
-        } catch (error) {
-            console.error('Error fetching todos:', error);
-        }
-        };
+    useEffect(() =>{
+        fetch("https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/tasks_by_age")
+        .then((data) => data.json())
+        .then(json => setTodoDays(json));
+        console.log(setTodoDays);
+        }, []);
 
-        fetchTodos();
-    }, [setTodoDays]);
 
-    useEffect(() => {
-        console.log('Todo Days from Context:', todoDays); 
-        if (todoDays.length > 0) {
         const today = new Date();
-        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        const currentDayName = daysOfWeek[today.getDay()];
-        console.log('Current Day Name:', currentDayName); 
-
-        const filtered = todoDays.filter((item) => item.days.includes(currentDayName));
-        console.log('Filtered Todos:', filtered); 
-        setFilteredTodos(filtered);
-        }
-    }, [todoDays]);
-
-    const handleCheckboxChange = (id) => {
-        const updatedTodos = todoDays.map(todo =>
-        todo.id === id ? { ...todo, checked: !todo.checked } : todo
-    );
-    setTodoDays(updatedTodos);
-
-    const today = new Date();
-    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const currentDayName = daysOfWeek[today.getDay()];
-
-    const filtered = updatedTodos.filter((item) => item.days.includes(currentDayName));
-    setFilteredTodos(filtered);
-};
+        const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const currentDayName = daysOfWeek[today.getDay()]; // Get the current day of the week
+        console.log(currentDayName);
+        console.log(todoDays);
+        
 
     return (
         <div className="sm:flex 2xl:text-7xl flex flex-col text-white">
@@ -67,27 +36,17 @@ function GoalsDay() {
             seeds, and avocados.
             </p>
             <div className="flex-1 m-2 3xl:mt-24">
-            <div className="text-white w-full p-1">
-                {filteredTodos.length > 0 ? (
-                filteredTodos.map((item) => (
-                    <div key={item.id}>
-                    <h1 className="text-xl text-lime-400">{item.title}</h1>
-                    <div>
-                        <input
-                        type="checkbox"
-                        className="float-right"
-                        checked={item.checked || false}
-                        onChange={() => handleCheckboxChange(item.id)}
-                        required
-                        />
-                    </div>
-                    <p>{item.description}</p>
-                    </div>
-                ))
-                ) : (
-                <p>No todos available for today.</p>
-                )}
-            </div>
+            {todoDays.filter((item) => item.days === currentDayName).map((item) => (
+                <div key={item.id}>
+                <p>{item.title}</p>
+                <p>{item.description}</p>
+                <input
+                    type="checkbox"
+                    className="float-right"
+                    required
+                />
+                </div>
+            ))}
             <button
                 type="submit"
                 onClick={handleDoneButton}

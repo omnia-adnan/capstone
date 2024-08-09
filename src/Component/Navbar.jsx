@@ -19,7 +19,7 @@ function Navbar() {
         try {
             const token = localStorage.getItem('authToken');
             if (token) {
-                await axios.post('https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/me', {}, {
+                await axios.get('https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/me', {}, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
             }
