@@ -4,7 +4,7 @@ import { GiWeight } from "react-icons/gi";
 import { GiBodyHeight } from "react-icons/gi";
 import { BiMaleFemale } from "react-icons/bi";
 import { GiAges } from "react-icons/gi";
-import { ContextApi, useAuth } from "../Component/ContextApi";
+import { useAuth } from "../Component/ContextApi";
 
 
 
@@ -14,10 +14,8 @@ function Profile() {
         weight,
         height,
         gender,
-    } = useAuth(ContextApi);
+    } = useAuth();
     const [imgUser, setImgUser] = useState(null);
-
-    
     
 
 

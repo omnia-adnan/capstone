@@ -4,26 +4,38 @@ import { useAuth } from "../Component/ContextApi";
 import { LuLogIn } from "react-icons/lu";
 
 function Login() {
-    const { email, password, setEmail, setPassword, setIsLoggedIn } = useAuth();
+    const { email, password, setEmail, setPassword, setIsLoggedIn, setShowProfile } = useAuth();
     const navigate = useNavigate();
 
     const handleLoginSubmit = (e) => {
         e.preventDefault();
         const data = { email, password };
         console.log("Request data:", data);
-
         axios.post(`https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/login`, data)
             .then(resp => {
-                console.log(resp);
+                console.log("Login response:", resp);
                 const authToken = resp.data.authToken;
-                localStorage.setItem('authToken', authToken);
-                setIsLoggedIn(true);
-                navigate('/Profile');
+                    localStorage.setItem('authToken', authToken);
+                    axios.get(`https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/me`, {
+                    headers: {
+                        Authorization: `Bearer ${authToken}`
+                    }
+                })
+                .then(userInfo => {
+                    console.log("User details:", userInfo.data);
+                    localStorage.setItem('user', JSON.stringify(userInfo.data));
+                    setIsLoggedIn(true);
+                    navigate('/Profile');
+                })
+                .catch(err => {
+                    console.log('Failed to fetch user details:', err);
+                });
             })
             .catch(err => {
                 console.log('Login failed:', err);
             });
     };
+    
 
     return (
         <div className="max-w-screen-xl m-2 sm:m-10 3xl:m-20 text-white border-2 border-black shadow-lg rounded-lg sm:rounded-3xl shadow-lime-400 flex justify-center">
@@ -59,6 +71,7 @@ function Login() {
                             </div>
                             <button
                                 type="submit"
+                                onClick={() => { setShowProfile(true); }}
                                 className="mt-5 tracking-wide font-semibold bg-lime-400 shadow-lg shadow-lime-400 border border-black text-black w-full py-2 rounded-full mb-2 hover:bg-lime-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                             >
                                 <LuLogIn className="w-6 h-6 -ml-2" />

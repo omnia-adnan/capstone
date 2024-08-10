@@ -11,20 +11,34 @@ function GoalsDay() {
         navigate('/FinishWorkoutpage');
     };
 
-    useEffect(() =>{
-        fetch("https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/tasks_by_age")
-        .then((data) => data.json())
-        .then(json => setTodoDays(json));
-        console.log(setTodoDays);
-        }, []);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const url = "https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/tasks_by_age";
+                const ageGroupId = JSON.parse(localStorage.getItem('ageGroupId'));
+        
+                const response = await fetch(url);
+                if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+                }
+        
+                const json = await response.json();
+                setTodoDays(json.filter(item => item.days === ageGroupId));
+            } catch (error) {
+                console.error("Error fetching tasks:", error);
+            }
+            };
+        
+            fetchData();
+        }, []);      
 
 
         const today = new Date();
         const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        const currentDayName = daysOfWeek[today.getDay()]; // Get the current day of the week
-        console.log(currentDayName);
-        console.log(todoDays);
-        
+        const currentDayName = daysOfWeek[today.getDay()]; 
+        const tasks_by_age = todoDays.filter((item) => item.days === currentDayName);
+        console.log('currentDayName', currentDayName);
+        console.log('tasks_by_age', tasks_by_age);
 
     return (
         <div className="sm:flex 2xl:text-7xl flex flex-col text-white">
@@ -36,7 +50,7 @@ function GoalsDay() {
             seeds, and avocados.
             </p>
             <div className="flex-1 m-2 3xl:mt-24">
-            {todoDays.filter((item) => item.days === currentDayName).map((item) => (
+            {tasks_by_age.map((item) => (
                 <div key={item.id}>
                 <p>{item.title}</p>
                 <p>{item.description}</p>

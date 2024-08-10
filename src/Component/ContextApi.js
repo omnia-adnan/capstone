@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 
 export const ContextApi = createContext({});
@@ -20,12 +22,36 @@ export function ContextApiAuth(props) {
     const [todoDays, setTodoDays] = useState([]);
     const [selectedAgeGroup, setSelectedAgeGroup] = useState(null);
 
+
 useEffect(() => {
     const token = localStorage.getItem("authToken");
     if (token) {
         setIsLoggedIn(true);
     }
 }, []);
+
+
+useEffect(() => {
+    const fetchUserDetails = async () => {
+        const token = localStorage.getItem('authToken');
+        if (token) {
+            try {
+                const response = await axios.get(`https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/me`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                console.log("User details:", response.data);
+                localStorage.setItem('user', JSON.stringify(response.data));
+            } catch (err) {
+                console.error('Failed to fetch user details:', err);
+            }
+        }
+    };
+
+    fetchUserDetails();
+}, []);
+
 
 const value = {
     name,

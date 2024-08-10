@@ -3,55 +3,19 @@ import img from "../Images/mother.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ContextApi, useAuth } from "../Component/ContextApi";
-import { useEffect } from 'react';
+
 
 function SignUp() {
     const { 
         name, age, weight, height, gender, email, password, selectedAgeGroup,
         setName, setAge, setWeight, setHeight, setGender, setEmail, setPassword,
-        setIsLoggedIn, setShowProfile, setTodoDays, setSelectedAgeGroup
+        setIsLoggedIn, setShowProfile, setSelectedAgeGroup,
     } = useAuth(ContextApi);
-    
     const navigate = useNavigate();
-    const fetchTodoDays = async (ageGroupId) => {
-            try {
-                const response = await axios.get('https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/age_groups', {
-                    params: { ageGroupId }
-            });
-            console.log('Full response:', response);
-        
-            const allData = response.data;
-            console.log('All data:', allData);
-        
-            const ageRanges = {
-                    '1': { min: 1, max: 6 },
-                    '2': { min: 7, max: 12 },
-                    '3': { min: 13, max: 17 }
-            };
-        
-            const ageRange = ageRanges[ageGroupId];
-            console.log('Selected age range:', ageRange);
-        
-            if (!ageRange) {
-                    console.error('Invalid ageGroupId:', ageGroupId);
-                    return;
-            }
-        
-            const filteredData = allData.filter(item => {
-                    console.log('Item:', item);
-                    return item.min_age >= ageRange.min && item.max_age <= ageRange.max;
-            });
-        
-            console.log('Filtered data:', filteredData);
-            setTodoDays(filteredData);
-            } catch (error) {
-            console.error('Error fetching todo days:', error);
-            }
-        };
         
 
     const handleAgeGroupChange = (event) => {
-        const ageGroup = event.target.value;
+        let ageGroup = event.target.value;
         setSelectedAgeGroup(ageGroup);
 
         console.log(`Selected age group: ${ageGroup}`);
@@ -63,15 +27,15 @@ function SignUp() {
         } else if (ageGroup === "3") {
             setAge("13-17");
         }
-    };
-
-    useEffect(() => {
-        console.log(`Selected age group in useEffect: ${selectedAgeGroup}`);
-            if (selectedAgeGroup) {
-                fetchTodoDays(selectedAgeGroup);
-            }
-    }, [selectedAgeGroup]);
+        localStorage.setItem("ageGroupId", ageGroup);
+        console.log('ageGroupId', typeof ageGroup);
         
+    };
+    
+    
+        
+
+
 
     const handleRegistraSubmit = (e) => {
         e.preventDefault();
@@ -131,11 +95,11 @@ function SignUp() {
                                         />
                                         <select
                                             value={selectedAgeGroup}
-                                            onChange={handleAgeGroupChange}
+                                            onChange={(e) => setSelectedAgeGroup(e.target.value)}
                                             required
                                             className="w-full px-8 py-2 rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                         >
-                                            <option value="">Select Age Group</option>
+                                            <option value="0">Select Age Group</option>
                                             <option value="1">Early Childhood (1-6 years)</option>
                                             <option value="2">Middle Childhood (7-12 years)</option>
                                             <option value="3">Adolescence (13-17 years)</option>
@@ -191,9 +155,10 @@ function SignUp() {
                                             className="w-full px-8 py-2 rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                         />
                                         <button
+                                            onChange={handleAgeGroupChange}
                                             onClick={() => { setShowProfile(true); }}
                                             className="mt-5 tracking-wide font-semibold bg-lime-400 shadow-lg shadow-lime-400 border border-black text-black w-full py-2 rounded-full mb-2 hover:bg-lime-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
-                                        >
+                                            >
                                             <svg className="w-6 h-6 -ml-2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                                 <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
                                                 <circle cx="8.5" cy="7" r="4" />

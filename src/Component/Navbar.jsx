@@ -4,7 +4,7 @@ import { FiMenu } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
 import logo from '../Images/logo-the-capston.png';
 import { useAuth } from "./ContextApi";
-import axios from "axios";
+// import axios from "axios";
 
 function Navbar() {
     const { setUser, isLoggedIn, setIsLoggedIn } = useAuth();
@@ -15,22 +15,11 @@ function Navbar() {
         setTogglebar(false);
     };
 
-    const handleLogout = async () => {
-        try {
-            const token = localStorage.getItem('authToken');
-            if (token) {
-                await axios.get('https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/me', {}, {
-                    headers: { Authorization: `Bearer ${token}` }
-                });
-            }
-        } catch (error) {
-            console.error('Logout failed:', error);
-        } finally {
+    const handleLogout = () => {
             localStorage.removeItem('authToken');
             setUser(null);
             setIsLoggedIn(false);
             navigate('/');
-        }
     };
 
     return (
