@@ -4,7 +4,6 @@ import { FiMenu } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
 import logo from '../Images/logo-the-capston.png';
 import { useAuth } from "./ContextApi";
-// import axios from "axios";
 
 function Navbar() {
     const { setUser, isLoggedIn, setIsLoggedIn } = useAuth();
@@ -17,6 +16,8 @@ function Navbar() {
 
     const handleLogout = () => {
             localStorage.removeItem('authToken');
+            localStorage.removeItem('user');
+            localStorage.removeItem('ageGroupId');
             setUser(null);
             setIsLoggedIn(false);
             navigate('/');

@@ -23,35 +23,63 @@ export function ContextApiAuth(props) {
     const [selectedAgeGroup, setSelectedAgeGroup] = useState(null);
 
 
-useEffect(() => {
-    const token = localStorage.getItem("authToken");
-    if (token) {
-        setIsLoggedIn(true);
-    }
-}, []);
-
-
-useEffect(() => {
-    const fetchUserDetails = async () => {
-        const token = localStorage.getItem('authToken');
-        if (token) {
-            try {
-                const response = await axios.get(`https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/me`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
+    useEffect(() => {
+        const fetchUserDetails = async () => {
+            const token = localStorage.getItem("authToken");
+            if (token) {
+                setIsLoggedIn(true);
+                try {
+                    const response = await axios.get(`https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/me`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    });
+                    console.log("User details:", response.data);
+                    localStorage.setItem('user', JSON.stringify(response.data));
+                    
+                    if (response.data.name) {
+                        setName(response.data.name);
+                        console.log(name);
                     }
-                });
-                console.log("User details:", response.data);
-                localStorage.setItem('user', JSON.stringify(response.data));
-            } catch (err) {
-                console.error('Failed to fetch user details:', err);
+                    if (response.data.age) {
+                        const age = response.data.age;
+                        let ageGroup = "";
+    
+                        if (age >= 1 && age <= 6) {
+                            ageGroup = "1";
+                            setAge("1-6");
+                        } else if (age >= 7 && age <= 12) {
+                            ageGroup = "2";
+                            setAge("7-12");
+                        } else if (age >= 13 && age <= 17) {
+                            ageGroup = "3";
+                            setAge("13-17");
+                        }
+    
+                        setSelectedAgeGroup(ageGroup);
+                        localStorage.setItem("ageGroupId", ageGroup);
+                        console.log(`Selected age group: ${ageGroup}`);
+                    }
+                    if (response.data.weight) {
+                        setWeight(response.data.weight);
+                        console.log(weight);
+                    }
+                    if (response.data.height) {
+                        setHeight(response.data.height);
+                        console.log(height);      
+                    }
+                    if (response.data.gender) {
+                        setGender(response.data.gender);
+                        console.log(gender);      
+                    }
+                } catch (err) {
+                    console.error('Failed to fetch user details:', err);
+                }
             }
-        }
-    };
-
-    fetchUserDetails();
-}, []);
-
+        };
+        fetchUserDetails();
+    }, []);
+    
 
 const value = {
     name,

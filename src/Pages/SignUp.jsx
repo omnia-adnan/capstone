@@ -1,9 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import img from "../Images/mother.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ContextApi, useAuth } from "../Component/ContextApi";
-
 
 function SignUp() {
     const { 
@@ -12,14 +10,13 @@ function SignUp() {
         setIsLoggedIn, setShowProfile, setSelectedAgeGroup,
     } = useAuth(ContextApi);
     const navigate = useNavigate();
-        
 
     const handleAgeGroupChange = (event) => {
-        let ageGroup = event.target.value;
+        const ageGroup = event.target.value;
         setSelectedAgeGroup(ageGroup);
 
         console.log(`Selected age group: ${ageGroup}`);
-        
+
         if (ageGroup === "1") {
             setAge("1-6");
         } else if (ageGroup === "2") {
@@ -28,14 +25,7 @@ function SignUp() {
             setAge("13-17");
         }
         localStorage.setItem("ageGroupId", ageGroup);
-        console.log('ageGroupId', typeof ageGroup);
-        
     };
-    
-    
-        
-
-
 
     const handleRegistraSubmit = (e) => {
         e.preventDefault();
@@ -95,7 +85,7 @@ function SignUp() {
                                         />
                                         <select
                                             value={selectedAgeGroup}
-                                            onChange={(e) => setSelectedAgeGroup(e.target.value)}
+                                            onChange={handleAgeGroupChange}
                                             required
                                             className="w-full px-8 py-2 rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                         >
@@ -155,7 +145,7 @@ function SignUp() {
                                             className="w-full px-8 py-2 rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                         />
                                         <button
-                                            onChange={handleAgeGroupChange}
+                                            type="submit" 
                                             onClick={() => { setShowProfile(true); }}
                                             className="mt-5 tracking-wide font-semibold bg-lime-400 shadow-lg shadow-lime-400 border border-black text-black w-full py-2 rounded-full mb-2 hover:bg-lime-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                                             >
