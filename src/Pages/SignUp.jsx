@@ -7,9 +7,11 @@ function SignUp() {
     const { 
         name, age, weight, height, gender, email, password, selectedAgeGroup,
         setName, setAge, setWeight, setHeight, setGender, setEmail, setPassword,
-        setIsLoggedIn, setShowProfile, setSelectedAgeGroup,
+        setIsLoggedIn, setShowProfile, setSelectedAgeGroup, activity,setActivity,
+        calculateBMR,
     } = useAuth(ContextApi);
     const navigate = useNavigate();
+
 
     const handleAgeGroupChange = (event) => {
         const ageGroup = event.target.value;
@@ -29,6 +31,8 @@ function SignUp() {
 
     const handleRegistraSubmit = (e) => {
         e.preventDefault();
+        calculateBMR();
+
         let ageValue = 0;
         if (age.includes('-')) {
             const [minAge, maxAge] = age.split('-').map(Number);
@@ -44,7 +48,8 @@ function SignUp() {
             height: parseFloat(height),
             gender,
             email,
-            password 
+            password,
+            activity, 
         };
 
         console.log('Submitting registration data:', data);
@@ -55,7 +60,7 @@ function SignUp() {
                 const authToken = resp.data.authToken;
                 localStorage.setItem("authToken", authToken);
                 setIsLoggedIn(true);
-                navigate('/WelcomePage');
+                navigate('/GoalsDay');
             })
             .catch(err => {
                 console.error('Signup failed:', err.response ? err.response.data : err.message);
@@ -144,6 +149,14 @@ function SignUp() {
                                             placeholder="Password"
                                             className="w-full px-8 py-2 rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                         />
+                                        <select name="activity" className="w-full px-8 py-2 rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white text-black" value={activity} onChange={(e) => setActivity(e.target.value)} required>
+                                                    <option value="/">Select your Activity</option>
+                                                    <option value="1.2">Sedentary (Very littel or no exercise, and desk job)</option>
+                                                    <option value="1.375">Lightly Active (Light exercise 1 to 3 days per week)</option>
+                                                    <option value="1.55">Moderately Active (Moderate exercise 3 to 5 days per week)</option>
+                                                    <option value="1.725">Very Active (Heavy exercise 6 to 7 days per week)</option>
+                                                    <option value="1.9">Extremely Active (very intense exercise, and physical job)</option>
+                                        </select>
                                         <button
                                             type="submit" 
                                             onClick={() => { setShowProfile(true); }}

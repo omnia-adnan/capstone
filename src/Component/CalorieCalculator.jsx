@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useAuth } from "./ContextApi";
 
 
 function CalorieCalculator() {
-    const [activity, setActivity] = useState("");
-    const [age, setAge] = useState("");
-    const [weightKg, setWeightKg] = useState("");
-    const [heightCm, setHeightCm] = useState("");
-    const [gender, setGender] = useState("");
-    const [bmr, setBmr] = useState("");
-
+    const { age,
+        weightKg,
+        heightCm,
+        gender,
+        activity,
+        bmr,
+        setAge,
+        setWeightKg,
+        setHeightCm,
+        setActivity,
+        setGender,
+        setBmr,
+        setCarbs,
+        setFat,
+        setProtein,
+        } = useAuth();
 
     const calculateBMR = (e) => {
         e.preventDefault();
@@ -33,7 +42,16 @@ function CalorieCalculator() {
         console.log({ bmrCalc }); 
         const totalcalc = bmrCalc * activityLevel;
         setBmr(totalcalc.toFixed(2));
+
+        const carbsValue = totalcalc * 0.4;
+        const fatValue = totalcalc * 0.3;
+        const proteinValue = totalcalc * 0.3;
+    
+        setCarbs(carbsValue.toFixed(2));
+        setFat(fatValue.toFixed(2));
+        setProtein(proteinValue.toFixed(2));
     }
+
     return(
         <form className="block mx-3 sm:mx-auto max-w-sm text-white xl:text-xl 3xl:text-4xl rounded-lg p-6 mb-10 border border-black shadow-[0_2px_15px_-3px_#a3e635]">
             <label>
@@ -64,7 +82,7 @@ function CalorieCalculator() {
             </label><br />
             <label>
             Height in cm
-            <input type="number" name="heightCm" value={heightCm} 
+            <input type="number" name="height" value={heightCm} 
             min={30}
             max={220}
             required
@@ -74,7 +92,7 @@ function CalorieCalculator() {
             </label><br />
             <label>
             Weight in kg
-            <input type="number" name="weightKg" value={weightKg} 
+            <input type="number" name="weight" value={weightKg} 
             min={3}
             max={400}
             required
@@ -93,7 +111,7 @@ function CalorieCalculator() {
             </select>
             </label>
             <div>
-            {bmr && <p>Your BMR is: {bmr} Cal/d</p>}
+            {bmr && <p>Your BMR is: {bmr} Cal/d </p>}
             </div>
             <button type="submit" onClick={calculateBMR}
             className="block w-full rounded-lg bg-lime-400 text-black px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]]"

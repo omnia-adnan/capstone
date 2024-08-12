@@ -21,6 +21,15 @@ export function ContextApiAuth(props) {
     const [showProfile, setShowProfile] = useState(false);
     const [todoDays, setTodoDays] = useState([]);
     const [selectedAgeGroup, setSelectedAgeGroup] = useState(null);
+    const [activity, setActivity] = useState("");
+    // const [age, setAge] = useState("");
+    const [weightKg, setWeightKg] = useState("");
+    const [heightCm, setHeightCm] = useState("");
+    // const [gender, setGender] = useState("");
+    const [bmr, setBmr] = useState("");
+    const [carbs, setCarbs] = useState(null);
+    const [fat, setFat] = useState(null);
+    const [protein, setProtein] = useState(null);
 
 
     useEffect(() => {
@@ -79,13 +88,47 @@ export function ContextApiAuth(props) {
         };
         fetchUserDetails();
     }, []);
+
+    const calculateBMR = () => {
+        const weightKg = parseFloat(weight);
+        const heightcm = parseFloat(height);
+        const ageValue = parseInt(age);
+        const activityLevel = parseFloat(activity);
+
+        if (isNaN(weightKg) || isNaN(heightcm) || isNaN(ageValue) || isNaN(activityLevel) || gender === "") {
+            console.log('Invalid input');
+            return;
+        }
+
+        let bmrCalc = 0;
+        if (gender === "male") {
+            bmrCalc = 66.5 + ( 13.75 * weight) + ( 5.003 * height) - ( 6.755 * ageValue)
+        } else if(gender === "female"){
+            bmrCalc = 665 + ( 9.563 * weight) + ( 1.850 * height) - ( 4.676 * ageValue)
+        } else {
+            console.log('filed to calc');
+        }
+        console.log({ bmrCalc }); 
+        const totalcalc = bmrCalc * activityLevel;
+        setBmr(totalcalc.toFixed(2));
+
+        const carbsValue = totalcalc * 0.4;
+        const fatValue = totalcalc * 0.3;
+        const proteinValue = totalcalc * 0.3;
+    
+        setCarbs(carbsValue.toFixed(2));
+        setFat(fatValue.toFixed(2));
+        setProtein(proteinValue.toFixed(2));
+    }
     
 
 const value = {
     name,
     age,
     weight,
+    weightKg,
     height,
+    heightCm,
     gender,
     email,
     password,
@@ -94,10 +137,17 @@ const value = {
     isLoggedIn,
     todoDays,
     selectedAgeGroup,
+    activity,
+    bmr,
+    carbs,
+    fat,
+    protein,
     setName,
     setAge,
     setWeight,
+    setWeightKg,
     setHeight,
+    setHeightCm,
     setGender,
     setEmail,
     setPassword,
@@ -106,6 +156,12 @@ const value = {
     setIsLoggedIn,
     setTodoDays,
     setSelectedAgeGroup,
+    setActivity,
+    setBmr,
+    setCarbs,
+    setFat,
+    setProtein,
+    calculateBMR,
 };
 
     return (

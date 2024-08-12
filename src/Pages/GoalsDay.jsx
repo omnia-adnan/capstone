@@ -4,12 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../Component/ContextApi';
 
 function GoalsDay() {
-    const { todoDays, setTodoDays } = useAuth();
+    const { bmr, carbs, fat, protein,todoDays, setTodoDays } = useAuth();
     const navigate = useNavigate();
 
     const handleDoneButton = () => {
         navigate('/FinishWorkoutpage');
     };
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -71,20 +72,20 @@ function GoalsDay() {
         </div>
         <div className="py-2 2xl:py-10 2xl:-ml-[6%] 2xl:mr-[6%]">
             <div className="flex border-b-2 border-blue-500">
-            <p className="relative p-[10px] 2xl:p-14 pl-3">Maintain weight</p>
-            <p className="absolute right-3 2xl:right-[5%] pt-2 2xl:pt-14">100% Cal/d</p>
+            <p className="relative p-[10px] 2xl:p-14 pl-3">Kilojoules</p>
+            <p className="absolute right-3 2xl:right-[5%] pt-2 2xl:pt-14">{bmr} g</p>
             </div>
             <div className="flex border-b-2 border-blue-500">
-            <p className="relative p-[10px] 2xl:p-14 pl-3">Mild weight loss 0.25 kg/week</p>
-            <p className="absolute right-3 2xl:right-[5%] pt-2 2xl:pt-14">90% Cal/d</p>
+            <p className="relative p-[10px] 2xl:p-14 pl-3">Carbohydrates</p>
+            <p className="absolute right-3 2xl:right-[5%] pt-2 2xl:pt-14">{carbs} g</p>
             </div>
             <div className="flex border-b-2 border-blue-500">
-            <p className="relative p-[10px] 2xl:p-14 pl-3">Weight loss 0.5 kg/week</p>
-            <p className="absolute right-3 2xl:right-[5%] pt-2 2xl:pt-14">79% Cal/d</p>
+            <p className="relative p-[10px] 2xl:p-14 pl-3">Fat </p>
+            <p className="absolute right-3 2xl:right-[5%] pt-2 2xl:pt-14">{fat} g</p>
             </div>
             <div className="flex border-b-2 border-blue-500">
-            <p className="relative p-[10px] 2xl:p-14 pl-3">Extreme weight loss 1 kg/week</p>
-            <p className="absolute right-3 2xl:right-[5%] pt-2 2xl:pt-14">59% Cal/d</p>
+            <p className="relative p-[10px] 2xl:p-14 pl-3">Protein</p>
+            <p className="absolute right-3 2xl:right-[5%] pt-2 2xl:pt-14">{protein} g</p>
             </div>
         </div>
     </div>
