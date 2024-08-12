@@ -1,23 +1,16 @@
-import { useAuth } from "./ContextApi";
+import { useState } from "react";
 
 
 function CalorieCalculator() {
-    const { age,
-        weightKg,
-        heightCm,
-        gender,
-        activity,
-        bmr,
-        setAge,
-        setWeightKg,
-        setHeightCm,
-        setActivity,
-        setGender,
-        setBmr,
-        setCarbs,
-        setFat,
-        setProtein,
-        } = useAuth();
+    const [activity, setActivity] = useState("");
+    const [age, setAge] = useState("");
+    const [weightKg, setWeightKg] = useState("");
+    const [heightCm, setHeightCm] = useState("");
+    const [gender, setGender] = useState("");
+    const [bmr, setBmr] = useState("");
+    const [bmi, setBmi] = useState('');
+    const [message, setMessage] = useState('');
+
 
     const calculateBMR = (e) => {
         e.preventDefault();
@@ -42,18 +35,39 @@ function CalorieCalculator() {
         console.log({ bmrCalc }); 
         const totalcalc = bmrCalc * activityLevel;
         setBmr(totalcalc.toFixed(2));
-
-        const carbsValue = totalcalc * 0.4;
-        const fatValue = totalcalc * 0.3;
-        const proteinValue = totalcalc * 0.3;
-    
-        setCarbs(carbsValue.toFixed(2));
-        setFat(fatValue.toFixed(2));
-        setProtein(proteinValue.toFixed(2));
     }
 
+    const calculateBMI = (e) => {
+        e.preventDefault();
+        if (weightKg === 0 || heightCm === 0) {
+            <p>please, full all field</p>
+        } else {
+            let bmi = ( weightKg / ( heightCm * heightCm ) * 703)
+            setBmi (bmi.toFixed(1))
+            if (bmi < 25) {
+                setMessage(" You are underweight")
+            } if (bmi >= 25 && bmi < 30) {
+                setMessage(" You are healthy weight ")
+            } else {
+                setMessage(" You are overweight ")
+            }
+        }
+    }
+
+    let imgSrc;
+    if (bmi < 1) {
+        imgSrc = null;
+    } else{
+        if (bmi < 25) {
+            imgSrc = require('https://cdn.pixabay.com/photo/2024/03/26/11/47/created-by-ai-8656589_1280.png')
+        } if (bmi >= 25 && bmi < 30) {
+            imgSrc = require('https://cdn.pixabay.com/photo/2020/05/25/09/10/duck-5217739_1280.png')
+        } else {
+            imgSrc = require('https://cdn.pixabay.com/photo/2022/05/20/12/26/duck-7209354_1280.png')
+        }
+    }
     return(
-        <form className="block mx-3 sm:mx-auto max-w-sm text-white xl:text-xl 3xl:text-4xl rounded-lg p-6 mb-10 border border-black shadow-[0_2px_15px_-3px_#a3e635]">
+        <form onSubmit={calculateBMR} className="block mx-3 sm:mx-auto max-w-sm text-white xl:text-xl 3xl:text-4xl rounded-lg p-6 mb-10 border border-black shadow-[0_2px_15px_-3px_#a3e635]">
             <label>
                 Your Gender 
             </label><br />
@@ -82,7 +96,7 @@ function CalorieCalculator() {
             </label><br />
             <label>
             Height in cm
-            <input type="number" name="height" value={heightCm} 
+            <input type="number" name="heightCm" value={heightCm} 
             min={30}
             max={220}
             required
@@ -92,7 +106,7 @@ function CalorieCalculator() {
             </label><br />
             <label>
             Weight in kg
-            <input type="number" name="weight" value={weightKg} 
+            <input type="number" name="weightKg" value={weightKg} 
             min={3}
             max={400}
             required
@@ -111,9 +125,14 @@ function CalorieCalculator() {
             </select>
             </label>
             <div>
-            {bmr && <p>Your BMR is: {bmr} Cal/d </p>}
+            {bmr && <p>Your BMR is: {bmr} Cal/d</p>}
+            {bmi && <p> your BMI: {bmi}</p>}
+            {message}
             </div>
-            <button type="submit" onClick={calculateBMR}
+            <div className='img-container'>
+                <img src={imgSrc} alt=''></img>
+            </div>
+            <button type="submit" onClick={calculateBMI}
             className="block w-full rounded-lg bg-lime-400 text-black px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]]"
             >Calculate BMR</button>
         </form>

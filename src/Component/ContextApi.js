@@ -22,14 +22,12 @@ export function ContextApiAuth(props) {
     const [todoDays, setTodoDays] = useState([]);
     const [selectedAgeGroup, setSelectedAgeGroup] = useState(null);
     const [activity, setActivity] = useState("");
-    // const [age, setAge] = useState("");
-    const [weightKg, setWeightKg] = useState("");
-    const [heightCm, setHeightCm] = useState("");
-    // const [gender, setGender] = useState("");
     const [bmr, setBmr] = useState("");
     const [carbs, setCarbs] = useState(null);
     const [fat, setFat] = useState(null);
     const [protein, setProtein] = useState(null);
+    const [userData, setUserData] = useState(null);
+
 
 
     useEffect(() => {
@@ -53,7 +51,6 @@ export function ContextApiAuth(props) {
                     if (response.data.age) {
                         const age = response.data.age;
                         let ageGroup = "";
-    
                         if (age >= 1 && age <= 6) {
                             ageGroup = "1";
                             setAge("1-6");
@@ -64,7 +61,6 @@ export function ContextApiAuth(props) {
                             ageGroup = "3";
                             setAge("13-17");
                         }
-    
                         setSelectedAgeGroup(ageGroup);
                         localStorage.setItem("ageGroupId", ageGroup);
                         console.log(`Selected age group: ${ageGroup}`);
@@ -81,6 +77,10 @@ export function ContextApiAuth(props) {
                         setGender(response.data.gender);
                         console.log(gender);      
                     }
+                    if (response.data) {
+                        setUserData(response.data);
+                    }
+                    calculateBMR();
                 } catch (err) {
                     console.error('Failed to fetch user details:', err);
                 }
@@ -95,40 +95,46 @@ export function ContextApiAuth(props) {
         const ageValue = parseInt(age);
         const activityLevel = parseFloat(activity);
 
-        if (isNaN(weightKg) || isNaN(heightcm) || isNaN(ageValue) || isNaN(activityLevel) || gender === "") {
+        try{
+        if (isNaN(weightKg) || isNaN(heightcm) || isNaN(ageValue) || isNaN((activityLevel) || activityLevel <= 0) || gender === "") {
             console.log('Invalid input');
             return;
         }
 
         let bmrCalc = 0;
         if (gender === "male") {
-            bmrCalc = 66.5 + ( 13.75 * weight) + ( 5.003 * height) - ( 6.755 * ageValue)
-        } else if(gender === "female"){
-            bmrCalc = 665 + ( 9.563 * weight) + ( 1.850 * height) - ( 4.676 * ageValue)
+            bmrCalc = 66.5 + (13.75 * weightKg) + (5.003 * heightcm) - (6.755 * ageValue);
+        } else if (gender === "female") {
+            bmrCalc = 665 + (9.563 * weightKg) + (1.850 * heightcm) - (4.676 * ageValue);
         } else {
-            console.log('filed to calc');
+            console.log('Failed to calculate');
         }
-        console.log({ bmrCalc }); 
+
         const totalcalc = bmrCalc * activityLevel;
         setBmr(totalcalc.toFixed(2));
+        console.log({ bmrCalc }); 
 
         const carbsValue = totalcalc * 0.4;
         const fatValue = totalcalc * 0.3;
         const proteinValue = totalcalc * 0.3;
     
         setCarbs(carbsValue.toFixed(2));
+        console.log(carbsValue);
         setFat(fatValue.toFixed(2));
+        console.log(fatValue);
         setProtein(proteinValue.toFixed(2));
+        console.log(proteinValue);
+    } catch (error) {
+        console.error('Error calculating BMR:', error);
     }
-    
+    };
+
 
 const value = {
     name,
     age,
     weight,
-    weightKg,
     height,
-    heightCm,
     gender,
     email,
     password,
@@ -142,12 +148,11 @@ const value = {
     carbs,
     fat,
     protein,
+    userData,
     setName,
     setAge,
     setWeight,
-    setWeightKg,
     setHeight,
-    setHeightCm,
     setGender,
     setEmail,
     setPassword,
@@ -161,6 +166,7 @@ const value = {
     setCarbs,
     setFat,
     setProtein,
+    setUserData,
     calculateBMR,
 };
 

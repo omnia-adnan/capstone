@@ -1,16 +1,20 @@
 import img from "../Images/mother.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { ContextApi, useAuth } from "../Component/ContextApi";
+import {  useAuth } from "../Component/ContextApi";
 
 function SignUp() {
     const { 
         name, age, weight, height, gender, email, password, selectedAgeGroup,
         setName, setAge, setWeight, setHeight, setGender, setEmail, setPassword,
-        setIsLoggedIn, setShowProfile, setSelectedAgeGroup, activity,setActivity,
+        setIsLoggedIn, setShowProfile, setSelectedAgeGroup, activity, setActivity,
         calculateBMR,
-    } = useAuth(ContextApi);
+        // setBmr, setCarbs, setProtein, setFat
+    } = useAuth();
     const navigate = useNavigate();
+
+    
+    
 
 
     const handleAgeGroupChange = (event) => {
@@ -31,7 +35,6 @@ function SignUp() {
 
     const handleRegistraSubmit = (e) => {
         e.preventDefault();
-        calculateBMR();
 
         let ageValue = 0;
         if (age.includes('-')) {
@@ -61,7 +64,9 @@ function SignUp() {
                 localStorage.setItem("authToken", authToken);
                 setIsLoggedIn(true);
                 navigate('/GoalsDay');
+                calculateBMR();
             })
+            
             .catch(err => {
                 console.error('Signup failed:', err.response ? err.response.data : err.message);
             });
@@ -149,7 +154,8 @@ function SignUp() {
                                             placeholder="Password"
                                             className="w-full px-8 py-2 rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                         />
-                                        <select name="activity" className="w-full px-8 py-2 rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white text-black" value={activity} onChange={(e) => setActivity(e.target.value)} required>
+                                        <select name="activity" className="w-full px-8 py-2 rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white text-black" value={activity} 
+                                        onChange={(e) => setActivity(e.target.value)} required>
                                                     <option value="/">Select your Activity</option>
                                                     <option value="1.2">Sedentary (Very littel or no exercise, and desk job)</option>
                                                     <option value="1.375">Lightly Active (Light exercise 1 to 3 days per week)</option>
