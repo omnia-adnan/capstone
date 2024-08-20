@@ -8,11 +8,10 @@ import CalorieCalculator from "../Component/CalorieCalculator";
 
 
 function Home() {
-    // const [video, setVideo] = useState(0);
     const [gitData, setGitData] = useState([]);
 
     useEffect(() =>{
-        fetch("https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/article_link")
+        fetch("https://x8ki-letl-twmt.n7.xano.io/api:CLjjbwBb/article_link")
         .then((data) => data.json())
         .then(json => setGitData(json));
         console.log(setGitData);
@@ -25,10 +24,6 @@ function Home() {
         "https://www.youtube.com/watch?v=Vpx-RlF0AcA",
     ]
 
-    // const randomHero = e => {
-    //     const len = herosSection.length;
-    //     setVideo(Math.floor(Math.random() * len));
-    //         };
 
     return(
         <div>
@@ -43,7 +38,6 @@ function Home() {
             height="100%"
             />
         </div>
-        
         <div>
         <div>
             <div>
@@ -52,7 +46,7 @@ function Home() {
             Her presence fosters self-esteem, and self-confidence, and empowers her child to navigate life's 
             challenges. This bond impacts emotional intelligence, social interactions, intellectual growth, 
             and moral understanding, leaving an indelible mark on their trajectory."/>
-            <h1 className="text-2xl px-2 xl:px-3 text-lime-400 mb-5 font-semibold">Calculate how many calories yourchild's body needs per day</h1>
+            <h1 className="text-2xl px-2 xl:px-3 text-lime-400 mb-5">Calculate how many calories yourchild's body needs per day</h1>
             <CalorieCalculator/>
             </div>
             <Information description="As a parent or caregiver, you play a big part in shaping children's eating and drinking habits. 

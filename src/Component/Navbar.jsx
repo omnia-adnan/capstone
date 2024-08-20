@@ -25,7 +25,7 @@ function Navbar() {
 
     return (
         <div>
-            <span className="sm:hidden flex bg-lime-400 z-40 text-blue-900 font-semibold">
+            <span className="sm:hidden flex bg-lime-400 z-40 text-blue-900">
                 <Link to="/">
                     <img src={logo} alt="logo" className="w-[38%] object-cover p-1" />
                 </Link>
@@ -43,62 +43,80 @@ function Navbar() {
                         </Link>
                     </span>
                     <li>
-                        <Link to="/" className="flex items-center text-lg xl:text-2xl 3xl:text-6xl pb-2 3xl:pb-8 mt-4 text-violet-950 hover:duration-150 hover:font-extrabold hover:text-lime-50">
+                        <Link to="/" className="flex items-center text-lg xl:text-2xl 3xl:text-6xl pb-2 3xl:pb-8 mt-4 text-violet-950 w-[80%] ml-1">
                             <div className="size-[10%] sm:size-[23%]">
                                 <img src="https://cdn.pixabay.com/photo/2023/05/28/14/11/tree-house-8023784_1280.png" alt="" />
                             </div>
-                            <span className="pl-[4%]">Home</span>
+                            <span className="pl-[4%] hover:font-extrabold hover:text-lime-50 duration-500 ease-in-out">Home</span>
                         </Link>
                     </li>
-                    <li>
-                        <Link to="/Profile" className="flex items-center text-lg xl:text-2xl 3xl:text-6xl pb-2 3xl:pb-8 text-violet-950 hover:duration-150 hover:font-extrabold hover:text-lime-50">
-                            <div className="size-[9%] sm:size-[20%]">
-                                <img src="https://cdn.pixabay.com/photo/2022/02/28/20/42/rabbit-7040066_960_720.png" alt="" />
-                            </div>
-                            <span className="pl-[4%]">Profile</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/GoalsDay" className="flex items-center text-lg xl:text-2xl 3xl:text-6xl pb-2 3xl:pb-8 text-violet-950 hover:duration-150 hover:font-extrabold hover:text-lime-50">
-                            <div className="size-[9%] sm:size-[20%]">
-                                <img src="https://cdn.pixabay.com/photo/2023/04/12/01/47/cartoon-7918608_1280.png" alt="" />
-                            </div>
-                            <span className="pl-[4%]">GoalsDay</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/Calendar" className="flex items-center text-lg xl:text-2xl 3xl:text-6xl pb-2 3xl:pb-8 text-violet-950 hover:duration-150 hover:font-extrabold hover:text-lime-50">
-                            <div className="size-[9%] sm:size-[20%]">
-                                <img src="https://cdn.pixabay.com/photo/2013/07/13/12/04/calendar-159098_1280.png" alt="" />
-                            </div>
-                            <span className="pl-[4%]">Calendar</span>
-                        </Link>
-                    </li>
+                    
                     {isLoggedIn ? 
-                        <li className="pb-2 3xl:pb-8">
-                            <div className="flex justify-center items-center text-lg xl:text-2xl 3xl:text-6xl text-violet-950 border border-black py-1 px-4 w-[80%] ml-1 rounded-full hover:duration-150 hover:font-bold hover:bg-lime-200" onClick={handleLogout}>
-                                <div className="size-[7%] sm:size-[20%]">
-                                    <img src="https://cdn.pixabay.com/photo/2014/04/03/00/33/hand-308667_1280.png" alt="" />
+                        <>
+                        <li>
+                            <Link to="/Profile" className="flex items-center text-lg xl:text-2xl 3xl:text-6xl pb-2 3xl:pb-8 mt-4 text-violet-950 w-[80%] ml-1">
+                                <div className="size-[9%] sm:size-[20%]">
+                                    <img src="https://cdn.pixabay.com/photo/2022/02/28/20/42/rabbit-7040066_960_720.png" alt="" />
                                 </div>
-                                <span className="pl-[4%]">Logout</span>
-                            </div>
+                                <span className="pl-[4%] hover:font-extrabold hover:text-lime-50 duration-500 ease-in-out">Profile</span>
+                            </Link>
                         </li>
+                        <li>
+                            <Link to="/GoalsDay" className="flex items-center text-lg xl:text-2xl 3xl:text-6xl pb-2 3xl:pb-8 mt-4 text-violet-950 w-[80%] ml-1">
+                                <div className="size-[9%] sm:size-[20%]">
+                                    <img src="https://cdn.pixabay.com/photo/2023/04/12/01/47/cartoon-7918608_1280.png" alt="" />
+                                </div>
+                                <span className="pl-[4%] hover:font-extrabold hover:text-lime-50 duration-500 ease-in-out">GoalsDay</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/Calendar" className="flex items-center text-lg xl:text-2xl 3xl:text-6xl pb-2 3xl:pb-8 mt-4 text-violet-950 w-[80%] ml-1">
+                                <div className="size-[9%] sm:size-[20%]">
+                                    <img src="https://cdn.pixabay.com/photo/2013/07/13/12/04/calendar-159098_1280.png" alt="" />
+                                </div>
+                                <span className="pl-[4%] hover:font-extrabold hover:text-lime-50 duration-500 ease-in-out">Calendar</span>
+                            </Link>
+                        </li>
+                            <li className="pb-2 3xl:pb-8">
+                                <div className="flex justify-center items-center text-lg xl:text-2xl 
+                                3xl:text-6xl text-violet-950 border border-black w-[80%] ml-1 mb-3 rounded-full 
+                                hover:duration-500 bg-lime-400 shadow-lg shadow-lime-400
+                                py-1 hover:shadow-lime-700 hover:translate-x-[0.15rem] transition-shadow
+                                duration-200 ease-in focus:shadow-outline focus:outline-none
+                                btn mt-4 px-4 text-center hover:text-lime-50" onClick={handleLogout}>
+                                    {/* <div className="size-[7%] sm:size-[20%]">
+                                        <img src="https://cdn.pixabay.com/photo/2014/04/03/00/33/hand-308667_1280.png" alt="" />
+                                    </div> */}
+                                    <span className="pl-[4%]">Logout</span>
+                                </div>
+                            </li>
+                        </>
                     : 
                         <>
                             <li className="pb-2 3xl:pb-8">
-                                <Link to="/SignUp" className="flex justify-center items-center text-lg xl:text-2xl 3xl:text-6xl text-violet-950 border border-black w-[80%] ml-1 mb-3 rounded-full hover:duration-150 hover:font-bold hover:bg-lime-200">
-                                    <div className="size-[7%] sm:size-[20%]">
+                                <Link to="/SignUp" className="flex justify-center items-center text-lg xl:text-2xl 
+                                3xl:text-6xl text-violet-950 border border-black w-[80%] ml-1 mb-3 rounded-full 
+                                hover:duration-500 bg-lime-400 shadow-lg shadow-lime-400
+                                py-1 hover:shadow-lime-700 hover:translate-x-[0.15rem] transition-shadow
+                                duration-200 ease-in focus:shadow-outline focus:outline-none
+                                btn mt-2 px-4 text-center hover:text-lime-50">
+                                    {/* <div className="size-[7%] sm:size-[20%]">
                                         <img src="https://cdn.pixabay.com/photo/2014/04/03/00/33/hand-308667_1280.png" alt="" />
-                                    </div>
+                                    </div> */}
                                     <span className="pl-[4%]">Sign Up</span>
                                 </Link>
                             </li>
                             <li className="pb-2 3xl:pb-8">
-                                <Link to="/Login" className="flex justify-center items-center text-lg xl:text-2xl 3xl:text-6xl text-violet-950 border border-black w-[80%] ml-1 rounded-full hover:duration-150 hover:font-bold hover:bg-lime-200">
+                                <Link to="/Login" className="flex justify-center items-center text-lg xl:text-2xl 
+                                3xl:text-6xl text-violet-950 border border-black w-[80%] ml-1 mb-3 rounded-full 
+                                hover:duration-500 bg-lime-400 shadow-lg shadow-lime-400
+                                py-1 hover:shadow-lime-700 hover:translate-x-[0.15rem] transition-shadow
+                                duration-200 ease-in focus:shadow-outline focus:outline-none
+                                btn px-4 text-center hover:text-lime-50">
                                     <span className="pr-[4%]">Login</span>
-                                    <div className="size-[7%] sm:size-[20%]">
+                                    {/* <div className="size-[7%] sm:size-[20%]">
                                         <img src="https://cdn.pixabay.com/photo/2016/03/31/21/55/hand-1296726_1280.png" alt="" />
-                                    </div>
+                                    </div> */}
                                 </Link>
                             </li>
                         </>

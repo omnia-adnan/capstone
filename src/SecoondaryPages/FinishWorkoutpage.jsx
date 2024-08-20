@@ -6,7 +6,7 @@ function WelcomePage() {
     const navigate = useNavigate();
     
     const handleButton = () => {
-        navigate('/')
+        navigate('/Calendar')
     }
 
     return(

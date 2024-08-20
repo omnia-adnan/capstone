@@ -4,7 +4,7 @@ import { useAuth } from "../Component/ContextApi";
 import { LuLogIn } from "react-icons/lu";
 
 function Login() {
-    const { email, password, setEmail, setPassword, setIsLoggedIn, setShowProfile, calculateBMR } = useAuth();
+    const { email, password, setEmail, setPassword, setIsLoggedIn, setShowProfile } = useAuth();
     const navigate = useNavigate();
 
     const handleLoginSubmit = (e) => {
@@ -26,7 +26,6 @@ function Login() {
                     localStorage.setItem('user', JSON.stringify(userInfo.data));
                     setIsLoggedIn(true);
                     navigate('/Profile');
-                    calculateBMR();
                 })
                 .catch(err => {
                     console.log('Failed to fetch user details:', err);

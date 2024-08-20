@@ -8,8 +8,6 @@ function SignUp() {
         name, age, weight, height, gender, email, password, selectedAgeGroup,
         setName, setAge, setWeight, setHeight, setGender, setEmail, setPassword,
         setIsLoggedIn, setShowProfile, setSelectedAgeGroup, activity, setActivity,
-        calculateBMR,
-        // setBmr, setCarbs, setProtein, setFat
     } = useAuth();
     const navigate = useNavigate();
 
@@ -63,8 +61,7 @@ function SignUp() {
                 const authToken = resp.data.authToken;
                 localStorage.setItem("authToken", authToken);
                 setIsLoggedIn(true);
-                navigate('/GoalsDay');
-                calculateBMR();
+                navigate('/WelcomePage');
             })
             
             .catch(err => {

@@ -27,6 +27,8 @@ export function ContextApiAuth(props) {
     const [fat, setFat] = useState(null);
     const [protein, setProtein] = useState(null);
     const [userData, setUserData] = useState(null);
+    const [calculateNeeded, setCalculateNeeded] = useState([])
+
 
 
 
@@ -41,12 +43,12 @@ export function ContextApiAuth(props) {
                             Authorization: `Bearer ${token}`
                         }
                     });
-                    console.log("User details:", response.data);
+                    // console.log("User details:", response.data);
                     localStorage.setItem('user', JSON.stringify(response.data));
                     
                     if (response.data.name) {
                         setName(response.data.name);
-                        console.log(name);
+                        // console.log(name);
                     }
                     if (response.data.age) {
                         const age = response.data.age;
@@ -63,25 +65,28 @@ export function ContextApiAuth(props) {
                         }
                         setSelectedAgeGroup(ageGroup);
                         localStorage.setItem("ageGroupId", ageGroup);
-                        console.log(`Selected age group: ${ageGroup}`);
+                        // console.log(`Selected age group: ${ageGroup}`);
                     }
                     if (response.data.weight) {
                         setWeight(response.data.weight);
-                        console.log(weight);
+                        // console.log(weight);
                     }
                     if (response.data.height) {
                         setHeight(response.data.height);
-                        console.log(height);      
+                        // console.log(height);      
                     }
                     if (response.data.gender) {
                         setGender(response.data.gender);
-                        console.log(gender);      
+                        // console.log(gender);      
                     }
                     if (response.data) {
                         setUserData(response.data);
-                    }
-                    calculateBMR();
-                } catch (err) {
+                    } 
+                    
+                    // const calculateResponse = await axios.get(`https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/calculate_the_needed`);
+                    // setCalculateNeeded(calculateResponse.data || []);
+                    // console.log("Needed Data:", calculateResponse.data); 
+                    } catch (err) {
                     console.error('Failed to fetch user details:', err);
                 }
             }
@@ -89,46 +94,7 @@ export function ContextApiAuth(props) {
         fetchUserDetails();
     }, []);
 
-    const calculateBMR = () => {
-        const weightKg = parseFloat(weight);
-        const heightcm = parseFloat(height);
-        const ageValue = parseInt(age);
-        const activityLevel = parseFloat(activity);
-
-        try{
-        if (isNaN(weightKg) || isNaN(heightcm) || isNaN(ageValue) || isNaN((activityLevel) || activityLevel <= 0) || gender === "") {
-            console.log('Invalid input');
-            return;
-        }
-
-        let bmrCalc = 0;
-        if (gender === "male") {
-            bmrCalc = 66.5 + (13.75 * weightKg) + (5.003 * heightcm) - (6.755 * ageValue);
-        } else if (gender === "female") {
-            bmrCalc = 665 + (9.563 * weightKg) + (1.850 * heightcm) - (4.676 * ageValue);
-        } else {
-            console.log('Failed to calculate');
-        }
-
-        const totalcalc = bmrCalc * activityLevel;
-        setBmr(totalcalc.toFixed(2));
-        console.log({ bmrCalc }); 
-
-        const carbsValue = totalcalc * 0.4;
-        const fatValue = totalcalc * 0.3;
-        const proteinValue = totalcalc * 0.3;
     
-        setCarbs(carbsValue.toFixed(2));
-        console.log(carbsValue);
-        setFat(fatValue.toFixed(2));
-        console.log(fatValue);
-        setProtein(proteinValue.toFixed(2));
-        console.log(proteinValue);
-    } catch (error) {
-        console.error('Error calculating BMR:', error);
-    }
-    };
-
 
 const value = {
     name,
@@ -149,6 +115,7 @@ const value = {
     fat,
     protein,
     userData,
+    calculateNeeded,
     setName,
     setAge,
     setWeight,
@@ -167,7 +134,7 @@ const value = {
     setFat,
     setProtein,
     setUserData,
-    calculateBMR,
+    setCalculateNeeded,
 };
 
     return (
