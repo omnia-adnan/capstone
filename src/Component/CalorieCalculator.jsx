@@ -1,5 +1,4 @@
 import { useState } from "react";
-import boyImage from '../Images/boy.jpg';
 
 function CalorieCalculator() {
     const [activity, setActivity] = useState("");
@@ -46,28 +45,31 @@ function CalorieCalculator() {
         setBmi(bmi.toFixed(1));
     
         if (bmi < 18.5) {
-        setMessage("You are underweight.");
+        setMessage("underweight.");
         } else if (bmi >= 18.5 && bmi < 25) {
-        setMessage("You are a healthy weight.");
+        setMessage("healthy weight.");
         } else {
-        setMessage("You are overweight.");
-        }
-    
-        if (bmi < 1) {
-        imgSrc = null;
-        } else if (bmi < 18.5) {
-        imgSrc = require('../Images/thin fat kids 1.jpg');
-        } else if (bmi >= 18.5 && bmi < 25) {
-        imgSrc = boyImage;
-        } else {
-        imgSrc = require('../Images/images (7).jpeg');
+        setMessage("overweight.");
         }
     };
     
-        let imgSrc; 
+    let imgSrc;
+
+    if (bmi < 1) {
+        imgSrc = null
+        } else {
+        if(bmi < 25) {
+            imgSrc = require('../Images/underweight.png')
+        } else if (bmi >= 25 && bmi < 30) {
+            imgSrc = require('../Images/healthy.png')
+        } else {
+            imgSrc = require('../Images/overweight.png')
+        }
+    }
     
     return(
-        <form className="block mx-3 sm:mx-auto max-w-sm text-white xl:text-xl 3xl:text-4xl rounded-lg p-6 mb-10 border border-black shadow-[0_2px_15px_-3px_#a3e635]">
+        <form className="block mx-3 lg:flex sm:mx-auto max-w-sm lg:max-w-3xl text-white xl:text-xl rounded-lg p-6 mb-10 border border-black shadow-[0_2px_15px_-3px_#a3e635]">
+            <div className="lg:w-1/2 lg:mr-4">
             <label>
                 Your Gender 
             </label><br />
@@ -124,17 +126,20 @@ function CalorieCalculator() {
                         <option value="1.9">Extremely Active (very intense exercise, and physical job)</option>
             </select>
             </label>
-            <div className="lg:flex">
-            <div>
-            {bmr && <p>Your BMR is: {bmr} Cal/d</p>}
-            {bmi && <p> your BMI: {bmi}</p>}
-            {message}
-            </div>
-            <img src={imgSrc} alt="" />
-            </div>
             <button type="submit" onClick={calculateMetrics}
-            className="block w-full rounded-lg bg-lime-400 text-black px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]]"
+            className="mt-5 tracking-wide bg-lime-400 text-black w-full py-1.5 rounded-4xl mb-2 transition-all duration-300 hover:text-lime-50 ease-in-out flex items-center justify-center"
             >Calculate BMR</button>
+            </div>
+            <div className="lg:border-l border-black">
+            <h1 className="text-xl px-2 xl:px-3 text-lime-400 mb-1 my-5 lg:my-0">The Result 
+            </h1>
+            <div className="lg:ml-6">
+            {bmr && <p>BMR: {bmr} Cal/d</p>}
+            {bmi && <p>BMI: {bmi}</p>}
+            {message && <p> Based on your BMI, you are classified as: {message}</p>}
+            </div>
+            <img src={imgSrc} alt="" className=" block mx-auto w-1/4" />
+            </div>
         </form>
     );
 }
