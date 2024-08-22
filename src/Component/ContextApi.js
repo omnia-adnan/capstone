@@ -23,13 +23,10 @@ export function ContextApiAuth(props) {
     const [selectedAgeGroup, setSelectedAgeGroup] = useState(null);
     const [activity, setActivity] = useState("");
     const [bmr, setBmr] = useState("");
-    const [carbs, setCarbs] = useState(null);
+    const [carb, setCarb] = useState(null);
     const [fat, setFat] = useState(null);
     const [protein, setProtein] = useState(null);
     const [userData, setUserData] = useState(null);
-    const [calculateNeeded, setCalculateNeeded] = useState([])
-
-
 
 
     useEffect(() => {
@@ -43,12 +40,9 @@ export function ContextApiAuth(props) {
                             Authorization: `Bearer ${token}`
                         }
                     });
-                    // console.log("User details:", response.data);
                     localStorage.setItem('user', JSON.stringify(response.data));
-                    
                     if (response.data.name) {
                         setName(response.data.name);
-                        // console.log(name);
                     }
                     if (response.data.age) {
                         const age = response.data.age;
@@ -69,23 +63,28 @@ export function ContextApiAuth(props) {
                     }
                     if (response.data.weight) {
                         setWeight(response.data.weight);
-                        // console.log(weight);
                     }
                     if (response.data.height) {
                         setHeight(response.data.height);
-                        // console.log(height);      
                     }
                     if (response.data.gender) {
                         setGender(response.data.gender);
-                        // console.log(gender);      
+                    }
+                    if (response.data.bmr) {
+                        setBmr(response.data.bmr);
+                    }   
+                    if (response.data.carb) {
+                        setCarb(response.data.carb);
+                    }                 
+                    if (response.data.fat) {
+                        setFat(response.data.fat);                        
+                    }
+                    if (response.data.protein) {
+                        setProtein(response.data.protein);
                     }
                     if (response.data) {
                         setUserData(response.data);
                     } 
-                    
-                    // const calculateResponse = await axios.get(`https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/calculate_the_needed`);
-                    // setCalculateNeeded(calculateResponse.data || []);
-                    // console.log("Needed Data:", calculateResponse.data); 
                     } catch (err) {
                     console.error('Failed to fetch user details:', err);
                 }
@@ -111,11 +110,10 @@ const value = {
     selectedAgeGroup,
     activity,
     bmr,
-    carbs,
+    carb,
     fat,
     protein,
     userData,
-    calculateNeeded,
     setName,
     setAge,
     setWeight,
@@ -130,11 +128,10 @@ const value = {
     setSelectedAgeGroup,
     setActivity,
     setBmr,
-    setCarbs,
+    setCarb,
     setFat,
     setProtein,
     setUserData,
-    setCalculateNeeded,
 };
 
     return (

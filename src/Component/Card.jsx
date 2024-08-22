@@ -6,7 +6,7 @@ export const Card = ({
 }) => {
 
 return (
-        <div className="h-82 m-[2%] p-4 rounded-3xl text-white bg-blue-900 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+        <div className="h-82 m-2.5 md:m-[2%] p-4 rounded-3xl text-white bg-blue-900 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
             <h3 className="mb-2 text-xl font-Handlee leading-tight [text-shadow:2px_2px_4px_black]">{title}</h3>
             <p className="mb-2 text-sm">{description}</p>
             <a href={url} className="inline-block rounded bg-primary px-6 py-2 text-xs uppercase 

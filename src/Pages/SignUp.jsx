@@ -86,7 +86,7 @@ function SignUp() {
                                             name="name"
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
-                                            required
+                                            required={true}
                                             maxLength={15}
                                             minLength={2}
                                             placeholder="name"
@@ -98,7 +98,7 @@ function SignUp() {
                                         <select
                                             value={selectedAgeGroup}
                                             onChange={handleAgeGroupChange}
-                                            required
+                                            required={true}
                                             className="w-full px-8 py-2 text-black rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                         >
                                             <option value="0">age group</option>
@@ -112,6 +112,7 @@ function SignUp() {
                                         <select
                                             name="gender"
                                             value={gender}
+                                            required={true}
                                             onChange={(e) => setGender(e.target.value)}
                                             className="w-full px-8 py-2 text-black rounded-full mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                         >
@@ -122,8 +123,8 @@ function SignUp() {
                                         </label>
                                         <label className="p-3 text-white">
                                         Select your Activity
-                                        <select name="activity" className="w-full px-8 py-2 rounded-full text-black mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" 
-                                        value={activity} onChange={(e) => setActivity(e.target.value)} required>
+                                        <select required={true} name="activity" className="w-full px-8 py-2 rounded-full text-black mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" 
+                                        value={activity} onChange={(e) => setActivity(e.target.value)}>
                                                     <option value="/">activity</option>
                                                     <option value="1.2">Sedentary (Very littel or no exercise, and desk job)</option>
                                                     <option value="1.375">Lightly Active (Light exercise 1 to 3 days per week)</option>
@@ -139,7 +140,7 @@ function SignUp() {
                                             name="height"
                                             value={height}
                                             onChange={(e) => setHeight(e.target.value)}
-                                            required
+                                            required={true}
                                             min={49}
                                             max={200}
                                             placeholder="height"
@@ -153,7 +154,7 @@ function SignUp() {
                                             name="Weight"
                                             value={weight}
                                             onChange={(e) => setWeight(e.target.value)}
-                                            required
+                                            required={true}
                                             min={3}
                                             max={100}
                                             placeholder="weight"
@@ -167,7 +168,7 @@ function SignUp() {
                                             name="email"
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
-                                            required
+                                            required={true}
                                             placeholder="email"
                                             className="w-full px-8 py-2 rounded-full text-black mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                         />
@@ -179,7 +180,7 @@ function SignUp() {
                                             name="password"
                                             value={password}
                                             onChange={(e) => setPassword(e.target.value)}
-                                            required
+                                            required={true}
                                             placeholder="password"
                                             className="w-full px-8 py-2 rounded-full text-black mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                         />
