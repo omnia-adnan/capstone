@@ -16,31 +16,39 @@ function GoalsDay() {
     const handleDoneButton = async (e) => {
         e.preventDefault();
         const checkedTasks = Object.keys(chkValue)
-            .filter(itemId => chkValue[itemId]) 
-            .map(itemId => todoDays.find(task => task.id === parseInt(itemId))); 
+            .filter(itemId => chkValue[itemId])
+            .map(itemId => todoDays.find(task => task.id === parseInt(itemId)))
+            .filter(task => task);
+
+        if (checkedTasks.length === 0) {
+            console.log('No tasks selected.');
+            return;
+        }
 
         const data = {
-            title, 
-            description, 
+            title: "Completed Tasks",
+            description: "You are doing well",
             date: new Date().toISOString().split('T')[0], 
-            tasks: checkedTasks, 
+            tasks: checkedTasks.map(task => ({
+                id: task.id,
+                age_groups_id: task.age_groups_id, 
+                title: task.title,
+                description: task.description,
+            })),
         };
-        console.log('Data being sent:', data);
         try {
             const response = await axios.post('https://x8ki-letl-twmt.n7.xano.io/api:epthuZZq/save_tasks', data, {
                 headers: {
-                    'Content-Type': 'application/json'
-                }
+                    'Content-Type': 'application/json',
+                },
             });
-            console.log('Response:', response.data);
-    
             if (response.status === 200) {
                 navigate('/FinishWorkoutpage');
             } else {
                 console.error('Unexpected response status:', response.status);
             }
         } catch (error) {
-            console.error('Error saving tasks:', error);
+            console.error('Error saving tasks:', error.response ? error.response.data : error.message);
         }
     };
     

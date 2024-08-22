@@ -15,15 +15,25 @@ function Calendar() {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
-                setEvents(data.map(event => ({
+                console.log('Fetched Data:', data); 
+                const mappedData = data.map(event => ({
                     title: event.title,
                     date: event.date,
                     description: event.description,
-                })));
+                    tasks: event.tasks.map(task => ({
+                        id: task.id,
+                        age_groups_id: task.age_groups_id,
+                        title: task.title,
+                        description: task.description,
+                    })),
+                }));
+                console.log('Mapped Data:', mappedData); 
+                setEvents(mappedData);
             } catch (error) {
-                console.error('Error fetching events:', error);
+                console.error('Error fetching events:', error.response ? error.response.data : error.message);
             }
         };
+        
 
         fetchEvents();
     }, []);
