@@ -1,5 +1,3 @@
-import { useState } from "react";
-import img from "../Images/Profile_avatar_placeholder_large.png"
 import { GiWeight } from "react-icons/gi";
 import { GiBodyHeight } from "react-icons/gi";
 import { BiMaleFemale } from "react-icons/bi";
@@ -17,9 +15,11 @@ function Profile() {
         bmr,
         carb,
         fat,
-        protein,        
+        protein, 
+        imgUser,       
     } = useAuth();
-    const [imgUser, setImgUser] = useState(null);
+    
+    // console.log(imgUser);
     
 
     return(
@@ -27,17 +27,9 @@ function Profile() {
             <div className=" relative text-center lg:mx-10 xl:mx-24">
                 <div className="relative inline-block">
             <img 
-            src={imgUser ? URL.createObjectURL(imgUser) : img} 
+            src={imgUser} 
             alt="imgUser" 
             className=" object-cover rounded-full size-28 xl:size-32 block ml-auto mr-auto border-[3px] border-lime-400"/>
-            <input
-                type="file"
-                className="absolute inset-0 opacity-0 cursor-pointer"
-                onChange={(event) => {
-                console.log(event.target.files[0]); 
-                setImgUser(event.target.files[0]); 
-                }}
-            />
             </div>
             <h1 className=" m-2 text-xl xl:text-2xl">{name}</h1>
             <div className="flex justify-center items-center gap-10">
@@ -69,12 +61,14 @@ function Profile() {
             </div>
         </div>
             <div className="xl:m-4">
-                <div className='mt-3 hidden md:block'>
-                <h1 className='text-xl lg:text-2xl xl:text-3xl font-Handlee p-3 text-center text-lime-400 tracking-wider xl:mb-2'>"Remember this advice of the day!"</h1>
+            <div className='mt-3 hidden md:block'>
+                <h1 className='text-xl lg:text-2xl xl:text-3xl font-Handlee p-3 text-center text-lime-400 tracking-wider xl:mb-2'>
+                    "Remember this advice of the day!"
+                </h1>
                 <p className="text-sm lg:text-lg xl:text-xl font-Handlee text-justify px-4 xl:mb-3">
-                Feeling 'hangry' is a real thing. Your brain needs a steady supply of glucose, so eating regularly is 
-                crucial. Don't fear good fats, as they are essential for maintaining brain and cell structure. 
-                Good fats can be found in olive oil, nuts,seeds, and avocados.
+                    Feeling 'hangry' is a real thing. Your brain needs a steady supply of glucose, so eating regularly is crucial. 
+                    Don't fear good fats, as they are essential for maintaining brain and cell structure. Good fats can be found 
+                    in olive oil, nuts, seeds, and avocados.
                 </p>
             </div>
         <div className="flex md:ml-3">

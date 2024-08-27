@@ -5,21 +5,17 @@ import {  useAuth } from "../Component/ContextApi";
 
 function SignUp() {
     const { 
-        name, age, weight, height, gender, email, password, selectedAgeGroup,
-        setName, setAge, setWeight, setHeight, setGender, setEmail, setPassword,
+        name, age, weight, height, gender, email, password, selectedAgeGroup, setImgUser,
+        setName, setAge, setWeight, setHeight, setGender, setEmail, setPassword, imgUser,
         setIsLoggedIn, setShowProfile, setSelectedAgeGroup, activity, setActivity,
     } = useAuth();
     const navigate = useNavigate();
-    
-    
-    
-
 
     const handleAgeGroupChange = (event) => {
         const ageGroup = event.target.value;
         setSelectedAgeGroup(ageGroup);
 
-        console.log(`Selected age group: ${ageGroup}`);
+        // console.log(`Selected age group: ${ageGroup}`);
 
         if (ageGroup === "1") {
             setAge("1-6");
@@ -29,6 +25,17 @@ function SignUp() {
             setAge("13-17");
         }
         localStorage.setItem("ageGroupId", ageGroup);
+    };
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImgUser(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
     };
 
     const handleRegistraSubmit = (e) => {
@@ -51,23 +58,21 @@ function SignUp() {
             email,
             password,
             activity, 
+            imgUser: imgUser,
         };
-
-        console.log('Submitting registration data:', data);
-
         axios.post('https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/signup', data)
             .then(resp => {
-                console.log('Signup response:', resp);
+                // console.log('Signup response:', resp);
                 const authToken = resp.data.authToken;
                 localStorage.setItem("authToken", authToken);
                 setIsLoggedIn(true);
                 navigate('/WelcomePage');
             })
-            
             .catch(err => {
                 console.error('Signup failed:', err.response ? err.response.data : err.message);
             });
     };
+    
 
     return (
         <div>
@@ -184,6 +189,14 @@ function SignUp() {
                                             placeholder="password"
                                             className="w-full px-8 py-2 rounded-full text-black mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                         />
+                                        </label>
+                                        <label className="p-3 text-white">
+                                            Set Image Profile
+                                            <input
+                                                type="file"
+                                                className="w-full px-8 py-2 rounded-full text-black mb-2 font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                                onChange={handleFileChange}
+                                            />
                                         </label>
                                         <button
                                             type="submit" 

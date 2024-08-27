@@ -16,6 +16,7 @@ export function ContextApiAuth(props) {
     const [weight, setWeight] = useState("");
     const [height, setHeight] = useState("");
     const [gender, setGender] = useState("");
+    const [imgUser, setImgUser] = useState(null);
     const [user, setUser] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
@@ -41,6 +42,9 @@ export function ContextApiAuth(props) {
                         }
                     });
                     localStorage.setItem('user', JSON.stringify(response.data));
+                    if (response.data.imgUser) {
+                        setImgUser(response.data.imgUser);
+                    }
                     if (response.data.name) {
                         setName(response.data.name);
                     }
@@ -103,6 +107,7 @@ const value = {
     gender,
     email,
     password,
+    imgUser,
     showProfile,
     user,
     isLoggedIn,
@@ -121,6 +126,7 @@ const value = {
     setGender,
     setEmail,
     setPassword,
+    setImgUser,
     setShowProfile,
     setUser,
     setIsLoggedIn,
