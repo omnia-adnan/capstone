@@ -17,10 +17,7 @@ function Profile() {
         fat,
         protein, 
         imgUserObject     
-    } = useAuth();
-    
-    // console.log(imgUser);
-    
+    } = useAuth();    
 
     return(
         <div className=" text-white m-4 mt-10 flex-1 md:text-xl md:flex">

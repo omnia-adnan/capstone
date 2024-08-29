@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 
@@ -65,7 +64,6 @@ export function ContextApiAuth(props) {
                         }
                         setSelectedAgeGroup(ageGroup);
                         localStorage.setItem("ageGroupId", ageGroup);
-                        // console.log(`Selected age group: ${ageGroup}`);
                     }
                     if (response.data.weight) {
                         setWeight(response.data.weight);
@@ -98,15 +96,6 @@ export function ContextApiAuth(props) {
         };
         fetchUserDetails();
     }, []);
-
-    // useEffect(() => {
-    //     const storedImgUser = localStorage.getItem('imgUser');
-    //     if (storedImgUser) {
-    //         setImgUser(JSON.parse(storedImgUser));
-    //         console.log(imgUser);
-            
-    //     }
-    // }, []);
     const storedImgUser = localStorage.getItem('imgUser');
     const imgUserObject = storedImgUser ? JSON.parse(storedImgUser) : null;
 

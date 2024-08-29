@@ -13,7 +13,6 @@ function Home() {
         fetch("https://x8ki-letl-twmt.n7.xano.io/api:CLjjbwBb/article_link")
         .then((data) => data.json())
         .then(json => setGitData(json));
-        console.log(setGitData);
         }, []);
 
         

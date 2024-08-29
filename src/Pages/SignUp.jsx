@@ -59,7 +59,6 @@ function SignUp() {
         };
         axios.post('https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/signup', data)
             .then(resp => {
-                // console.log('Signup response:', resp);
                 const authToken = resp.data.authToken;
                 localStorage.setItem("authToken", authToken);
                 setIsLoggedIn(true);

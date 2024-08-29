@@ -45,14 +45,14 @@ function GoalsDay() {
             return;
         }
     
+        if (chkValue.length === 0) {
+            setShowAlert(true);
+            return;
+        }
+    
         const checkedTasks = chkValue
             .map(itemId => todoDays.find(task => task.id === parseInt(itemId)))
             .filter(task => task);
-    
-        if (checkedTasks.length === 0) {
-            console.log('No tasks selected.');
-            return;
-        }
     
         const data = {
             title: "Completed Tasks",
@@ -107,7 +107,11 @@ function GoalsDay() {
                     {showAlert && (
                         <div className="fixed top-0 left-0 w-full h-full bg-black/40 flex justify-center items-center z-50">
                             <div className="bg-white/95 p-5 text-black rounded-lg shadow-lg w-72 text-center">
-                                <h1 className="text-lg xl:text-xl mb-4">The Done button has already been clicked today</h1>
+                                <h1 className="text-lg xl:text-xl mb-4">
+                                    {chkValue.length === 0 
+                                        ? "No tasks selected"
+                                        : "The Done button has already been clicked today"}
+                                </h1>
                                 <button onClick={handleClose} className="px-5 py-2 border-none cursor-pointer rounded bg-lime-400">Close</button>
                             </div>
                         </div>

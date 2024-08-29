@@ -60,9 +60,7 @@ function Calendar() {
                     console.error('HTTP error! status:', response.status, 'Response:', responseText);
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-    
-                console.log('Event saved successfully');
-            } catch (error) {
+                } catch (error) {
                 console.error('Error saving event:', error.message);
             }
         }
@@ -78,7 +76,6 @@ function Calendar() {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
-                console.log('Fetched Data:', data); 
                 const mappedData = data.map(event => ({
                     title: event.title,
                     date: event.date,
@@ -90,7 +87,6 @@ function Calendar() {
                         description: task.description,
                     })),
                 }));
-                console.log('Mapped Data:', mappedData); 
                 setEvents(mappedData);
             } catch (error) {
                 console.error('Error fetching events:', error.response ? error.response.data : error.message);

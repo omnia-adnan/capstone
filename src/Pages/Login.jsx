@@ -10,10 +10,8 @@ function Login() {
     const handleLoginSubmit = (e) => {
         e.preventDefault();
         const data = { email, password };
-        console.log("Request data:", data);
         axios.post(`https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/login`, data)
             .then(resp => {
-                // console.log("Login response:", resp);
                 const authToken = resp.data.authToken;
                     localStorage.setItem('authToken', authToken);
                     axios.get(`https://x8ki-letl-twmt.n7.xano.io/api:wt6EPZDC/auth/me`, {
@@ -22,7 +20,6 @@ function Login() {
                     }
                 })
                 .then(userInfo => {
-                    // console.log("User details:", userInfo.data);
                     localStorage.setItem('user', JSON.stringify(userInfo.data));
                     setIsLoggedIn(true);
                     navigate('/Profile');

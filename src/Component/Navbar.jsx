@@ -13,6 +13,7 @@ function Navbar() {
     const handleClickAway = () => {
         setTogglebar(false);
     };
+    
 
     const handleLogout = () => {
             localStorage.removeItem('authToken');
