@@ -7,7 +7,7 @@ import axios from 'axios';
 function GoalsDay() {
     const { todoDays, setTodoDays } = useAuth();
     const [chkValue, setChkValue] = useState([]);
-    const [showButton, setShowButton] = useState(true);
+    const [showAlert, setShowAlert] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -29,7 +29,11 @@ function GoalsDay() {
         };
         
         fetchData();
-    }, []);      
+    }, [setTodoDays]);   
+
+    const handleClose = () => {
+        setShowAlert(false);
+    };
 
     const handleDoneButton = async (e) => {
         e.preventDefault();
@@ -37,12 +41,11 @@ function GoalsDay() {
         const lastClicked = localStorage.getItem('lastDoneClickDate');
     
         if (lastClicked === today) {
-            console.log('The Done button has already been clicked today.');
+            setShowAlert(true);
             return;
         }
     
-        const checkedTasks = Object.keys(chkValue)
-            .filter(itemId => chkValue[itemId])
+        const checkedTasks = chkValue
             .map(itemId => todoDays.find(task => task.id === parseInt(itemId)))
             .filter(task => task);
     
@@ -72,8 +75,6 @@ function GoalsDay() {
     
             if (response.status === 200) {
                 localStorage.setItem('lastDoneClickDate', today);
-                console.log('Button will now be hidden.');
-                setShowButton(false); // Hide the button after successful completion
                 navigate('/FinishWorkoutpage');
             } else {
                 console.error('Unexpected response status:', response.status);
@@ -82,11 +83,12 @@ function GoalsDay() {
             console.error('Error saving tasks:', error.response ? error.response.data : error.message);
         }
     };
+
     const handleCheckboxChange = (itemId) => {
         setChkValue((prevState) =>
             prevState.includes(itemId)
-                ? prevState.filter(id => id !== itemId) 
-                : [...prevState, itemId] 
+                ? prevState.filter(id => id !== itemId)
+                : [...prevState, itemId]
         );
     };
 
@@ -95,14 +97,21 @@ function GoalsDay() {
     const currentDayName = daysOfWeek[today.getDay()]; 
     const tasks_by_age = todoDays.filter((item) => item.days === currentDayName);
 
-    const isButtonDisabled = !Object.values(chkValue).some((value) => value);
+    const isButtonDisabled = chkValue.length === 0;
 
     return (
         <div className="sm:flex flex flex-col text-white">
             <div className="gap-20">    
                 <div className='lg:flex mt-8'>
-                    <img src={img} alt="carcter" className="bg-cover size-[45%] hidden lg:block"/>
-                    {showButton}
+                    <img src={img} alt="character" className="bg-cover size-[45%] hidden lg:block"/>
+                    {showAlert && (
+                        <div className="fixed top-0 left-0 w-full h-full bg-black/40 flex justify-center items-center z-50">
+                            <div className="bg-white/95 p-5 text-black rounded-lg shadow-lg w-72 text-center">
+                                <h1 className="text-lg xl:text-xl mb-4">The Done button has already been clicked today</h1>
+                                <button onClick={handleClose} className="px-5 py-2 border-none cursor-pointer rounded bg-lime-400">Close</button>
+                            </div>
+                        </div>
+                    )}
                     <div className="flex-1 m-2 task-list flex flex-col gap-2 lg:mx-8">
                         {tasks_by_age.map((item) => (
                             <div key={item.id} className='task items-center justify-between p-2 rounded-md border border-white'>
@@ -116,17 +125,14 @@ function GoalsDay() {
                                 <p className='text-base ml-2'>{item.description}</p>
                             </div>
                         ))}
-                        {showButton && <button
-                            type="submit"
-                            disabled={isButtonDisabled}
-                            onClick={handleDoneButton}
-                            className="font-semibold bg-lime-400 shadow-lg shadow-lime-400 border
-                            border-black text-xl text-black py-2 rounded-full mb-2 hover:shadow-lime-700 hover:translate-y-1 transition-shadow
-                            duration-200 ease-in flex items-center justify-center focus:shadow-outline focus:outline-none
-                            btn mt-2 px-4 text-center"
-                        >
-                            Done
-                        </button>}
+                            <button
+                                type="submit"
+                                disabled={isButtonDisabled}
+                                onClick={handleDoneButton}
+                                className="font-semibold bg-lime-400 shadow-lg border border-black text-xl text-black py-2 rounded-full mb-2 hover:translate-y-1 transition-shadow duration-200 ease-in flex items-center justify-center"
+                            >
+                                Done
+                            </button>
                     </div>  
                 </div>
             </div>
