@@ -3,7 +3,6 @@ import ReactPlayer from "react-player/youtube";
 import { Card } from "../Component/Card";
 import '../style.css';
 import { Information } from "../Component/Information";
-// import img from "../Images/ai-generated1.webp";
 import CalorieCalculator from "../Component/CalorieCalculator";
 
 
@@ -19,9 +18,9 @@ function Home() {
 
         
     const herosSection = [
-        "https://www.youtube.com/watch?v=orVIPr25ivo",
         "https://www.youtube.com/watch?v=mMHVEFWNLMc",
         "https://www.youtube.com/watch?v=Vpx-RlF0AcA",
+        "https://www.youtube.com/watch?v=orVIPr25ivo",
     ]
 
 
@@ -56,7 +55,6 @@ function Home() {
             times before they will try it."/>
             <div>
             <div className="sm:flex">
-            {/* <img src={img} alt="carcter" className="block mx-auto sm:size-1/2"/> */}
             </div>
         </div>
         </div>

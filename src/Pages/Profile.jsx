@@ -16,7 +16,7 @@ function Profile() {
         carb,
         fat,
         protein, 
-        imgUser,       
+        imgUserObject     
     } = useAuth();
     
     // console.log(imgUser);
@@ -26,11 +26,14 @@ function Profile() {
         <div className=" text-white m-4 mt-10 flex-1 md:text-xl md:flex">
             <div className=" relative text-center lg:mx-10 xl:mx-24">
                 <div className="relative inline-block">
-            <img 
-            src={imgUser} 
-            alt="imgUser" 
-            className=" object-cover rounded-full size-28 xl:size-32 block ml-auto mr-auto border-[3px] border-lime-400"/>
-            </div>
+                {imgUserObject && (
+                    <img 
+                        src={imgUserObject.url} 
+                        alt={`${name}'s profile`} 
+                        className=" object-cover rounded-full size-28 xl:size-32 block ml-auto mr-auto border-[3px] border-lime-400"
+                    />
+                )}
+                </div>
             <h1 className=" m-2 text-xl xl:text-2xl">{name}</h1>
             <div className="flex justify-center items-center gap-10">
             <div>

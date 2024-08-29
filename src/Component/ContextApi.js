@@ -43,6 +43,8 @@ export function ContextApiAuth(props) {
                     });
                     localStorage.setItem('user', JSON.stringify(response.data));
                     if (response.data.imgUser) {
+                        localStorage.setItem('user', JSON.stringify(response.data));
+                        localStorage.setItem('imgUser', JSON.stringify(response.data.imgUser)); 
                         setImgUser(response.data.imgUser);
                     }
                     if (response.data.name) {
@@ -97,9 +99,20 @@ export function ContextApiAuth(props) {
         fetchUserDetails();
     }, []);
 
-    
+    // useEffect(() => {
+    //     const storedImgUser = localStorage.getItem('imgUser');
+    //     if (storedImgUser) {
+    //         setImgUser(JSON.parse(storedImgUser));
+    //         console.log(imgUser);
+            
+    //     }
+    // }, []);
+    const storedImgUser = localStorage.getItem('imgUser');
+    const imgUserObject = storedImgUser ? JSON.parse(storedImgUser) : null;
+
 
 const value = {
+    imgUserObject,
     name,
     age,
     weight,

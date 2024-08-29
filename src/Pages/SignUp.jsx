@@ -14,9 +14,6 @@ function SignUp() {
     const handleAgeGroupChange = (event) => {
         const ageGroup = event.target.value;
         setSelectedAgeGroup(ageGroup);
-
-        // console.log(`Selected age group: ${ageGroup}`);
-
         if (ageGroup === "1") {
             setAge("1-6");
         } else if (ageGroup === "2") {
@@ -44,7 +41,7 @@ function SignUp() {
         let ageValue = 0;
         if (age.includes('-')) {
             const [minAge, maxAge] = age.split('-').map(Number);
-            ageValue = Math.round((minAge + maxAge) / 2); 
+            ageValue = Math.round((minAge + maxAge) / activity); 
         } else {
             ageValue = parseInt(age, 10);
         }
