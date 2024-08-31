@@ -74,7 +74,7 @@ function Profile() {
         <div className="flex md:ml-3">
             <div className="flex-1 m-2 task-list flex flex-col gap-3 md:my-10 my-5 lg:my-3">
             <div className="task items-center justify-between p-2 rounded-md border border-white">
-            <p className="text-base font-medium text-lime-400">Kilojoules<p className="text-base ml-2 float-right text-white">{bmr} g</p></p>
+            <p className="text-base font-medium text-lime-400">Calorie<p className="text-base ml-2 float-right text-white">{bmr} g</p></p>
             </div>
             <div className="task items-center justify-between p-2 rounded-md border border-white">
             <p className="text-base font-medium text-lime-400">Carbohydrates<p className="text-base ml-2 float-right text-white">{carb} g</p></p>
